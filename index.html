@@ -65,7 +65,70 @@
         }
 
         .nav-right { display: flex; align-items: center; gap: 20px; }
+        /* --- 1. 풀스크린 메뉴 오버레이 --- */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #000;
+            z-index: 999; /* 기존 GNB(1000)보다 한 칸 아래 깔림 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        
+        .menu-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        /* --- 2. 거대한 영문 메뉴 타이포그래피 --- */
+        .menu-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+        
+        .menu-link {
+            font-size: 42px; /* 화면 꽉 차는 사이즈 */
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: -1.5px;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        
+        .menu-overlay.active .menu-link { transform: translateY(0); opacity: 1; }
+        .menu-overlay.active .menu-link:nth-child(1) { transition-delay: 0.1s; }
+        .menu-overlay.active .menu-link:nth-child(2) { transition-delay: 0.2s; }
+        .menu-overlay.active .menu-link:nth-child(3) { transition-delay: 0.3s; }
+        
+        /* --- 3. 메뉴 열렸을 때 GNB 강제 화이트 & X 변신 --- */
+        /* 스크롤 내린 상태에서 메뉴 열어도 뒤에 하얀 배경 날리고 글씨 하얗게 */
+        .gnb.menu-open {
+            background: transparent !important;
+            backdrop-filter: none !important;
+            border-bottom: none !important;
+        }
+        .gnb.menu-open .logo { color: #fff !important; }
+        .gnb.menu-open .contact-btn { color: #fff !important; border-color: #fff !important; }
+        .gnb.menu-open .menu-toggle span { background-color: #fff !important; }
+        
+        /* 햄버거 세 줄 -> X로 변신 애니메이션 */
+        .gnb.menu-open .menu-toggle span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+        .gnb.menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
+        .gnb.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
+
+        
         .contact-btn {
             text-decoration: none;
             color: var(--white);
@@ -374,7 +437,14 @@
             </button>
         </div>
     </nav>
-
+    <div class="menu-overlay">
+        <nav class="menu-nav">
+            <a href="#" class="menu-link">Corporate Identity</a>
+            <a href="#" class="menu-link">Our Divisions</a>
+            <a href="#" class="menu-link">Careers</a>
+        </nav>
+    </div>
+    
     <section class="hero">
         <video autoplay muted loop playsinline class="bg-video">
             <source src="bg-video.mp4" type="video/mp4">
@@ -472,10 +542,22 @@
                 nav.classList.remove('scrolled');
             }
         });
-
-        // 메뉴 열기 (나중에 구현)
+      
+        // 메뉴 열기/닫기 로직 교체
         function toggleMenu() {
-            alert('CMC® 사내 메뉴는 현재 업데이트 중입니다.');
+            const nav = document.querySelector('.gnb');
+            const overlay = document.querySelector('.menu-overlay');
+        
+            // 토글: 클래스가 없으면 넣고, 있으면 빼기
+            nav.classList.toggle('menu-open');
+            overlay.classList.toggle('active');
+        
+            // 메뉴 열렸을 때 뒤에 원래 페이지 스크롤되는 거 꽉 막기
+            if (overlay.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         }
 
 
