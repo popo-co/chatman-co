@@ -184,6 +184,50 @@
         }
 
         .section-white h2 { font-size: 2.5rem; letter-spacing: -1px; margin-bottom: 20px; }
+        .partners-section {
+    background-color: #fff;
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+.partners-title {
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: #bbb;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.marquee {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); /* 좌우 끝부분 흐리게 */
+}
+
+.marquee-content {
+    display: flex;
+    gap: 80px;
+    animation: scroll 40s linear infinite;
+    align-items: center;
+}
+
+.marquee-content img {
+    height: 25px; /* 로고 높이 통일 */
+    width: auto;
+    filter: grayscale(1) opacity(0.5); /* 처음엔 무채색으로 차분하게 */
+    transition: all 0.3s;
+}
+
+.marquee-content img:hover {
+    filter: grayscale(0) opacity(1); /* 마우스 올리면 원래 색상 */
+}
+
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-50% - 40px)); }
+}
     </style>
 </head>
 <body>
@@ -209,9 +253,28 @@
     </section>
 
     <section class="section-white">
-        <h2>Connect Anything.</h2>
-        <p>실리태번 유저들을 위한 최적의 세계관 설계 솔루션, 챗만컴퍼니입니다.</p>
-        <div style="height: 50vh;"></div> </section>
+<section class="partners-section">
+    <p class="partners-title">TRUSTED BY GLOBAL PARTNERS</p>
+    <div class="marquee">
+        <div class="marquee-content">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/BMW_logo_%28gray%29.svg" alt="BMW" style="filter: grayscale(1);">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg" alt="Nvidia">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Meta_Platforms_Inc._logo.svg" alt="Meta">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg" alt="OpenAI">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+            
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/BMW_logo_%28gray%29.svg" alt="BMW" style="filter: grayscale(1);">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg" alt="Nvidia">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Meta_Platforms_Inc._logo.svg" alt="Meta">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg" alt="OpenAI">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+        </div>
+    </div>
+</section>
 
     <script>
         // 스크롤 감지: 상단 바 색상 변경
