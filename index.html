@@ -239,7 +239,73 @@
                 line-height: 1.2;
             }
             
-
+            .divisions-section {
+                background-color: #fff;
+                padding: 80px 20px;
+                border-top: 1px solid #f0f0f0;
+            }
+            
+            .divisions-header {
+                margin-bottom: 30px;
+            }
+            
+            .divisions-header h2 {
+                font-size: 24px;
+                letter-spacing: -1px;
+                font-weight: 800;
+                color: #000;
+            }
+            
+            /* 3열 정방형 그리드 */
+            .divisions-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px; /* 인스타그램처럼 촘촘한 간격으로 세련미 강조 */
+            }
+            
+            .div-card {
+                position: relative;
+                aspect-ratio: 1 / 1; /* 완벽한 1:1 정사각형 비율 유지 */
+                background-size: cover;
+                background-position: center;
+                border-radius: 12px;
+                overflow: hidden;
+                text-decoration: none; /* 링크 밑줄 제거 */
+                display: block;
+            }
+            
+            /* 이미지 위 딤(Dim) 처리 */
+            .dim-overlay {
+                position: absolute;
+                top: 0; 
+                left: 0; 
+                width: 100%; 
+                height: 100%;
+                /* 아래쪽으로 갈수록 어두워지는 그라데이션으로 글자 가독성 확보 */
+                background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.1) 100%);
+                z-index: 1;
+                transition: background 0.3s ease;
+            }
+            
+            /* 터치/호버 시 살짝 밝아지는 디테일 */
+            .div-card:active .dim-overlay {
+                background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+            }
+            
+            /* 14px 화이트 텍스트 세팅 */
+            .div-title {
+                position: absolute;
+                bottom: 12px;
+                left: 10px;
+                right: 5px;
+                color: #ffffff;
+                font-size: 14px; /* 요청하신 사이즈 */
+                font-weight: 700;
+                line-height: 1.15;
+                letter-spacing: -0.3px;
+                z-index: 2;
+                word-break: keep-all; /* 긴 단어 안 깨지게 방어 */
+            }
             
 
         
@@ -314,7 +380,50 @@
     </section>
 
 
-</section>
+    <section class="divisions-section">
+        <div class="divisions-header">
+            <h2>Our Divisions</h2>
+        </div>
+        
+        <div class="divisions-grid">
+            <a href="#" class="div-card" style="background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=400');">
+                <div class="dim-overlay"></div>
+                <span class="div-title">Executive &<br>Strategy</span>
+            </a>
+            <a href="#" class="div-card" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=400');">
+                <div class="dim-overlay"></div>
+                <span class="div-title">Global PR &<br>Comms</span>
+            </a>
+            <a href="#" class="div-card" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=400');">
+                <div class="dim-overlay"></div>
+                <span class="div-title">Corporate<br>Operations</span>
+            </a>
+            <a href="#" class="div-card" style="background-image: url('https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&q=80&w=400');">
+                <div class="dim-overlay"></div>
+                <span class="div-title">Business Dev<br>& Sales</span>
+            </a>
+            <a href="#" class="div-card" style="background-image: url('https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=400');">
+                <div class="dim-overlay"></div>
+                <span class="div-title">Creative<br>Design</span>
+            </a>
+            <a href="#" class="div-card" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=400');">
+                <div class="dim-overlay"></div>
+                <span class="div-title">Strategic<br>Intelligence</span>
+            </a>
+            <a href="#" class="div-card" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=400');">
+                <div class="dim-overlay"></div>
+                <span class="div-title">Facilities<br>Management</span>
+            </a>
+            <a href="#" class="div-card" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=400');">
+                <div class="dim-overlay"></div>
+                <span class="div-title">Digital<br>Innovation</span>
+            </a>
+            <a href="#" class="div-card" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=400');">
+                <div class="dim-overlay"></div>
+                <span class="div-title">Data<br>Analytics</span>
+            </a>
+        </div>
+    </section>
 
 
     
