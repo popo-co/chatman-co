@@ -241,12 +241,16 @@
             
             .divisions-section {
                 background-color: #fff;
-                padding: 80px 20px;
+                padding: 0; /* 화면 좌우 꽉 차게 */
+                margin: 80px 0; /* 위아래 여백만 유지 */
                 border-top: 1px solid #f0f0f0;
             }
             
             .divisions-header {
-                margin-bottom: 30px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 20px 30px 20px; /* 헤더 텍스트만 내부 여백 */
             }
             
             .divisions-header h2 {
@@ -256,21 +260,27 @@
                 color: #000;
             }
             
-            /* 3열 정방형 그리드 */
+            /* 화살표 아이콘 */
+            .header-right svg {
+                display: block;
+            }
+            
+            /* 3열 화면 꽉 찬 그리드 */
             .divisions-grid {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
-                gap: 8px; /* 인스타그램처럼 촘촘한 간격으로 세련미 강조 */
+                gap: 0; /* 칸 사이 간격 없음 */
+                width: 100%;
             }
             
             .div-card {
                 position: relative;
-                aspect-ratio: 1 / 1; /* 완벽한 1:1 정사각형 비율 유지 */
+                aspect-ratio: 1 / 1; /* 완벽한 정사각형 비율 */
                 background-size: cover;
                 background-position: center;
-                border-radius: 12px;
+                border-radius: 0; /* 테두리 둥글게 없음 */
                 overflow: hidden;
-                text-decoration: none; /* 링크 밑줄 제거 */
+                text-decoration: none;
                 display: block;
             }
             
@@ -281,21 +291,20 @@
                 left: 0; 
                 width: 100%; 
                 height: 100%;
-                /* 아래쪽으로 갈수록 어두워지는 그라데이션으로 글자 가독성 확보 */
-                background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.1) 100%);
+                /* 아래쪽으로 갈수록 어두워지는 그라데이션 */
+                background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0.15) 100%);
                 z-index: 1;
-                transition: background 0.3s ease;
             }
             
-            /* 터치/호버 시 살짝 밝아지는 디테일 */
+            /* 터치 시 피드백 */
             .div-card:active .dim-overlay {
                 background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
             }
             
-            /* 14px 화이트 텍스트 세팅 */
+            /* 14px 화이트 텍스트 */
             .div-title {
                 position: absolute;
-                bottom: 12px;
+                bottom: 12px; /* 텍스트 위치 살짝 조절 */
                 left: 10px;
                 right: 5px;
                 color: #ffffff;
@@ -304,7 +313,7 @@
                 line-height: 1.15;
                 letter-spacing: -0.3px;
                 z-index: 2;
-                word-break: keep-all; /* 긴 단어 안 깨지게 방어 */
+                word-break: keep-all;
             }
             
 
@@ -379,10 +388,17 @@
         </div>
     </section>
 
-
     <section class="divisions-section">
         <div class="divisions-header">
-            <h2>Our Divisions</h2>
+            <div class="header-left">
+                <h2>Our Divisions</h2>
+            </div>
+            <div class="header-right">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="black" stroke-width="1.5"/>
+                    <path d="M10 16L14 12L10 8" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
         </div>
         
         <div class="divisions-grid">
@@ -392,7 +408,7 @@
             </a>
             <a href="#" class="div-card" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=400');">
                 <div class="dim-overlay"></div>
-                <span class="div-title">Global PR &<br>Comms</span>
+                <span class="div-title">Global PR &<br>Communications</span>
             </a>
             <a href="#" class="div-card" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=400');">
                 <div class="dim-overlay"></div>
@@ -412,7 +428,7 @@
             </a>
             <a href="#" class="div-card" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=400');">
                 <div class="dim-overlay"></div>
-                <span class="div-title">Facilities<br>Management</span>
+                <span class="div-title">Facilities<br>Management HQ</span>
             </a>
             <a href="#" class="div-card" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=400');">
                 <div class="dim-overlay"></div>
@@ -420,7 +436,19 @@
             </a>
             <a href="#" class="div-card" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=400');">
                 <div class="dim-overlay"></div>
-                <span class="div-title">Data<br>Analytics</span>
+                <span class="div-title">Data<br>Science Lab</span>
+            </a>
+            <a href="#" class="div-card" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=400');">
+                <div class="dim-overlay"></div>
+                <span class="div-title">Global<br>Policy</span>
+            </a>
+            <a href="#" class="div-card" style="background-image: url('https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&q=80&w=400');">
+                <div class="dim-overlay"></div>
+                <span class="div-title">AI Ethics<br>& Safety</span>
+            </a>
+            <a href="#" class="div-card" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=400');">
+                <div class="dim-overlay"></div>
+                <span class="div-title">Risk &<br>Compliance</span>
             </a>
         </div>
     </section>
