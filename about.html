@@ -215,6 +215,36 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* --- 웰컴 키트 영역 --- */
+        .welcome-kit-wrapper {
+            display: flex;
+            align-items: flex-start; /* 텍스트를 위쪽(상단)으로 정렬 */
+            gap: 20px;
+            margin-bottom: 40px; /* 아래 탭 버튼들과의 간격 */
+        }
+
+        .wk-title {
+            font-size: 16px;
+            font-weight: 600; /* 세미볼드 */
+            line-height: 1.3;
+            color: #000;
+            flex-shrink: 0; /* 글씨 공간이 찌그러지지 않게 방어 */
+            padding-top: 5px; /* 사진과 윗선 밸런스를 살짝 맞춤 */
+        }
+
+        .wk-image {
+            flex-grow: 1; /* 남은 가로 공간을 사진이 꽉 채움 */
+            height: 140px; /* 가로로 긴 형태를 위한 높이 지정 */
+            background-color: #eee;
+            border-radius: 12px;
+            background-size: cover;
+            background-position: center;
+        }
+
+
+
+        
     </style>
 </head>
 <body>
@@ -244,7 +274,10 @@
     <div class="container">
         <h1>The CMC® Standard</h1>
         <p>Experience the uncompromising excellence of our global operations.</p>
-        
+        <div class="welcome-kit-wrapper">
+            <div class="wk-title">Welcome<br>Kit</div>
+            <div class="wk-image" style="background-image: url('https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?auto=format&fit=crop&q=80&w=800');"></div>
+        </div>
         <div class="tabs-wrapper">
             <div class="category-tabs">
                 <button class="tab-btn active" onclick="showGallery('overview', this)">Overview</button>
