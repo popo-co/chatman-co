@@ -251,7 +251,12 @@
                 transform: translateY(30px); /* 20px에서 30px로 늘려 더 역동적으로 */
                 transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); /* animation 대신 transition 사용 */
             }
-            
+            /* 핵심 키워드 (Autonomous Intelligence.) 색상 보정 */
+            .reveal-line.d-3-bold,
+            .reveal-line.d-4-bold {
+                color: #111; /* 강조 문구는 블랙 고정 */
+                font-weight: 800;
+            }
             /* 스크롤이 닿아 .active 클래스가 추가되면 실행 */
             .identity-section.active .reveal-line {
                 opacity: 1;
