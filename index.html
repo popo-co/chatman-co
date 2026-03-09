@@ -198,131 +198,59 @@
                 from { transform: translateX(0); }
                 to { transform: translateX(calc(-50% - 50px)); }
             }
-        
-            /* 협력사 버튼 */
-            .partner-link-section {
+
+            /* Section 1: Numbers (흰색 배경) */
+            .numbers-section {
                 background-color: #fff;
-                padding: 0 0 80px 0; /* 슬라이드 바로 밑에 붙도록 상단 여백 제거 */
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            
-            .partner-link {
-                display: flex;
-                flex-direction: column; /* 문구와 아이콘 세로 배치 */
-                align-items: center;
-                text-decoration: none;
-                gap: 12px;
-            }
-            
-            .partner-link span {
-                font-size: 14px;
-                letter-spacing: 0.05em;
-                color: #000;
-                font-weight: 400;
-                text-transform: uppercase;
-            }
-            
-            .arrow-icon {
-                width: 48px;
-                height: 48px;
-                border: 1px solid #000; /* 화살표를 감싸는 아주 연한 원형 테두리 */
-                border-radius: 50%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                transition: all 0.3s ease;
-            }
-            
-            /* 32x32 크기 아이콘 유지 */
-            .arrow-icon svg {
-                width: 32px;
-                height: 32px;
-            }
-            
-            /* 터치 시 피드백 */
-            .partner-link:active .arrow-icon {
-                transform: scale(0.95);
-                background-color: #f8f8f8;
-            }
-
-
-
-            /* 카드 ui */
-            .work-section {
-                background-color: #f8f8f8;
-                padding: 60px 20px 100px 20px; 
-                border-top: 1px solid #f0f0f0; 
-            }
-            
-            .work-list {
+                padding: 100px 25px;
                 display: flex;
                 flex-direction: column;
-                gap: 30px; 
+                gap: 60px;
+            }
+            .num-label { font-size: 11px; letter-spacing: 0.2em; color: #888; font-weight: 700; text-transform: uppercase; }
+            .num-value { font-size: 64px; letter-spacing: -3px; font-weight: 800; color: #000; margin-top: 5px; }
+            
+            /* Section 2: Identity (연한 그레이 배경) */
+            .identity-section {
+                background-color: #f8f8f8;
+                padding: 140px 25px;
+                text-align: left;
+            }
+            .identity-text {
+                font-size: 42px;
+                line-height: 1.1;
+                letter-spacing: -2px;
+                font-weight: 700;
+                color: #ccc; /* 기본 문구는 연하게 */
+            }
+            .identity-text span {
+                color: #000; /* 핵심 슬로건만 진하게 강조 */
             }
             
-            .work-card {
-                width: 100%;
-                background: #ffffff;
-                border-radius: 28px;
-                overflow: hidden;
-                box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+            /* Section 3: Global Network (흰색 배경) */
+            .global-section {
+                background-color: #fff;
+                padding: 100px 25px 120px 25px;
             }
+            .section-tag { font-size: 11px; letter-spacing: 0.3em; color: #3b82f6; font-weight: 800; margin-bottom: 50px; }
+            .location-list { display: flex; flex-direction: column; border-top: 1px solid #eee; }
+            .location-item {
+                padding: 30px 0;
+                border-bottom: 1px solid #eee;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .location-item .city { font-size: 24px; font-weight: 800; letter-spacing: -1px; }
+            .location-item .status { font-size: 10px; font-weight: 700; color: #bbb; letter-spacing: 0.1em; }
             
-            .card-img {
-                width: 100%;
-                height: 400px; /* 카드가 큼직해졌으므로 높이를 다시 키움 */
-                background-size: cover;
-                background-position: center;
-                position: relative; /* 자식 요소(overlay) 정렬의 기준 */
+            /* 모바일 360px 최적화 */
+            @media (max-width: 375px) {
+                .num-value { font-size: 52px; }
+                .identity-text { font-size: 34px; }
+                .location-item .city { font-size: 20px; }
             }
-            
-            /* 이미지 하단에 딤(Dim) 그라데이션 효과 (글자 가독성 확보) */
-            .card-img::after {
-                content: "";
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: 200px; /* 그라데이션 높이 */
-                background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-                z-index: 1;
-            }
-            
-            /* 텍스트를 왼쪽 아래로 정렬 */
-            .card-overlay {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                padding: 30px 25px; /* 내부 여백 */
-                z-index: 2; /* 그라데이션보다 위로 올림 */
-                color: #ffffff; /* 글자색은 흰색 고정 */
-                box-sizing: border-box;
-            }
-            
-            .card-overlay .category {
-                font-size: 11px;
-                font-weight: 800;
-                color: rgba(255,255,255,0.7); /* 카테고리는 흐린 흰색 */
-                text-transform: uppercase;
-                letter-spacing: 0.1em;
-            }
-            
-            .card-overlay h3 {
-                font-size: 26px; /* 모바일에서 시원하게 키움 */
-                margin: 10px 0;
-                letter-spacing: -1px;
-                font-weight: 800;
-            }
-            
-            .card-overlay p {
-                font-size: 15px;
-                color: rgba(255,255,255,0.9); /* 본문은 살짝 투명도 부여 */
-                line-height: 1.5;
-                word-break: keep-all;
-            }
+        
     </style>
 </head>
 <body>
@@ -371,46 +299,49 @@
         </div>
     </section>
 
-    <section class="partner-link-section">
-        <a href="mailto:contact@chatman.co" class="partner-link">
-            <span>Become our partner</span>
-            <div class="arrow-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-        </a>
-    </section>
 
-    <section class="work-section">
-        <div class="work-list">
-            <div class="work-card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800');">
-                    <div class="card-overlay">
-                        <span class="category">Campaign</span>
-                        <h3>World-Building 101</h3>
-                        <p>실리태번 유저들을 위한 독보적인 페르소나 설계 가이드라인을 제시합니다.</p>
-                    </div>
-                </div>
-            </div>          
-            <div class="work-card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800');">
-                    <div class="card-overlay">
-                        <span class="category">Event</span>
-                        <h3>43F Library Night</h3>
-                        <p>밤샘 야근러들을 위한 타로 세션과 데이터 분석 워크숍을 개최합니다.</p>
-                    </div>
-                </div>
-            </div>
+    <section class="numbers-section">
+        <div class="number-item">
+            <span class="num-label">Narratives Generated</span>
+            <h2 class="num-value">1.2B+</h2>
+        </div>
+        <div class="number-item">
+            <span class="num-label">Persona Accuracy</span>
+            <h2 class="num-value">99.9%</h2>
+        </div>
+        <div class="number-item">
+            <span class="num-label">Active Universes</span>
+            <h2 class="num-value">450K</h2>
+        </div>
+    </section>
     
-            <div class="work-card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800');">
-                    <div class="card-overlay">
-                        <span class="category">Partnership</span>
-                        <h3>Digital Persona Lab</h3>
-                        <p>글로벌 파트너사들과 함께 차세대 AI 인터렉션 디자인을 연구합니다.</p>
-                    </div>
-                </div>
+    <section class="identity-section">
+        <div class="identity-content">
+            <p class="identity-text">
+                We don't just chat,<br>
+                <span>We build worlds.</span>
+            </p>
+        </div>
+    </section>
+    
+    <section class="global-section">
+        <p class="section-tag">GLOBAL NETWORK</p>
+        <div class="location-list">
+            <div class="location-item">
+                <span class="city">NEW YORK</span>
+                <span class="status">HQ / ACTIVE</span>
+            </div>
+            <div class="location-item">
+                <span class="city">SEOUL</span>
+                <span class="status">LAB / ACTIVE</span>
+            </div>
+            <div class="location-item">
+                <span class="city">TOKYO</span>
+                <span class="status">BRANCH / ACTIVE</span>
+            </div>
+            <div class="location-item">
+                <span class="city">LONDON</span>
+                <span class="status">EST. 2026</span>
             </div>
         </div>
     </section>
