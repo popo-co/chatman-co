@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The CMC® Standard</title>
+    <style>
+        body { background: #fff; margin: 0; font-family: -apple-system, sans-serif; }
+        .container { padding: 100px 20px; text-align: left; }
+        h1 { font-size: 32px; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 10px; }
+        p { color: #666; font-size: 14px; line-height: 1.6; margin-bottom: 40px; }
+        :root {
+    --black: #000000;
+    --white: #ffffff;
+}
+
+    /* --- about.html 전용 GNB 스타일 --- */
+        .gnb.about-nav {
+            position: fixed;
+            top: 0; 
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px; /* 높이 딱 맞춤 */
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 0.5px solid #ddd;
+            z-index: 1000;
+            box-sizing: border-box; /* 패딩 때문에 삐져나가는 거 방지 */
+        }
+        
+        /* 로고 버튼 스타일 */
+        .about-nav .logo { 
+            font-size: 22px; 
+            font-weight: 900; 
+            letter-spacing: -0.8px; 
+            color: #000; /* 블랙 고정 */
+            display: flex; 
+            align-items: center; 
+        }
+        .about-nav .reg-mark { 
+            font-size: 12px; 
+            vertical-align: super; 
+            margin-left: 1px; 
+            font-weight: 400; 
+        }
+        
+        /* 🚨 우측 버튼 컨테이너: 절대 안 내려가게 수직 중앙 정렬 강제 */
+        .about-nav .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .about-nav .contact-btn { 
+            text-decoration: none; 
+            font-size: 11px; 
+            font-weight: 600; 
+            color: #000; 
+            border: 1px solid #000; 
+            padding: 6px 12px; 
+            border-radius: 20px; 
+            display: inline-block;
+        }
+        
+        /* 🚨 햄버거 메뉴: 테두리 짤림/배경 무조건 날려버림 */
+        .about-nav .menu-toggle {
+            background: transparent !important;
+            border: none !important;
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            outline: none;
+        }
+        
+        .about-nav .menu-toggle span { 
+            display: block; 
+            width: 24px; 
+            height: 1.5px; 
+            background-color: #000; /* 블랙 3줄 고정 */
+        }
+        /* --- 1. 풀스크린 메뉴 오버레이 --- */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #000;
+            z-index: 999; /* 기존 GNB(1000)보다 한 칸 아래 깔림 */
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        
+        .menu-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        /* --- 2. 거대한 영문 메뉴 타이포그래피 --- */
+        .menu-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            margin-top: 80px;
+        }
+        
+        .menu-link {
+            font-size: 28px; /* 화면 꽉 차는 사이즈 */
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        
+        .menu-overlay.active .menu-link { transform: translateY(0); opacity: 1; }
+        .menu-overlay.active .menu-link:nth-child(1) { transition-delay: 0.1s; }
+        .menu-overlay.active .menu-link:nth-child(2) { transition-delay: 0.2s; }
+        .menu-overlay.active .menu-link:nth-child(3) { transition-delay: 0.3s; }
+        
+        /* --- 3. 메뉴 열렸을 때 GNB 강제 화이트 & X 변신 --- */
+        /* 스크롤 내린 상태에서 메뉴 열어도 뒤에 하얀 배경 날리고 글씨 하얗게 */
+        .gnb.menu-open {
+            background: transparent !important;
+            backdrop-filter: none !important;
+            border-bottom: none !important;
+        }
+        .gnb.menu-open .logo { color: #fff !important; }
+        .gnb.menu-open .contact-btn { color: #fff !important; border-color: #fff !important; }
+        .gnb.menu-open .menu-toggle span { background-color: #fff !important; }
+        
+        /* 햄버거 세 줄 -> X로 변신 애니메이션 */
+        .gnb.menu-open .menu-toggle span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+        .gnb.menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
+        .gnb.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+    </style>
+</head>
+<body>
+    <nav class="gnb about-nav">
+        <a href="index.html" class="logo" style="text-decoration: none;">
+            CMC<span class="reg-mark">®</span>
+        </a>
+        
+        <div class="nav-right">
+            <a href="mailto:contact@chatman.co" class="contact-btn">CONTACT</a>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+<div class="menu-overlay">
+    <nav class="menu-nav">
+        <a href="about.html" class="menu-link">Corporate Identity</a>
+        <a href="#" class="menu-link">Our Divisions</a>
+        <a href="#" class="menu-link">Careers</a>
+    </nav>
+</div>
+
+
+
+  
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.gnb');
+            const overlay = document.querySelector('.menu-overlay');
+            nav.classList.toggle('menu-open'); // X자 변신용 클래스 (필요시)
+            overlay.classList.toggle('active');
+            
+            if (overlay.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+    
+                // 메뉴 열기/닫기 로직 교체
+            function toggleMenu() {
+                const nav = document.querySelector('.gnb');
+                const overlay = document.querySelector('.menu-overlay');
+            
+                // 토글: 클래스가 없으면 넣고, 있으면 빼기
+                nav.classList.toggle('menu-open');
+                overlay.classList.toggle('active');
+            
+                // 메뉴 열렸을 때 뒤에 원래 페이지 스크롤되는 거 꽉 막기
+                if (overlay.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            }
+    </script>
+</body>
+</html>
