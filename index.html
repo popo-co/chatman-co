@@ -303,7 +303,110 @@
                 line-height: 1.2;
             }
 
+            /* --- Capabilities Section --- */
+            .capabilities-section {
+                background-color: #fff;
+                padding: 80px 0 100px 0; /* 좌우 패딩 없앰 (슬라이더가 화면 끝까지 가도록) */
+                border-top: 1px solid #f0f0f0;
+            }
+            
+            .cap-header {
+                padding: 0 20px; /* 헤더 텍스트만 좌우 여백 줌 */
+                margin-bottom: 30px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+                font-weight: 800;
+                color: #000;
+                letter-spacing: -1px;
+                margin-bottom: 12px;
+            }
+            
+            .section-desc {
+                font-size: 14px;
+                line-height: 1.5;
+                color: #666;
+            }
+            
+            /* --- 가로 슬라이더 핵심 --- */
+            .divisions-slider {
+                display: flex;
+                gap: 16px;
+                overflow-x: auto; /* 가로 스크롤 허용 */
+                padding: 0 20px; /* 양옆 여백 */
+                scroll-snap-type: x mandatory; /* 착착 감기는 스와이프 효과 */
+                -webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 */
+                scrollbar-width: none; /* 파이어폭스 스크롤바 숨김 */
+            }
+            
+            /* 크롬, 사파리 스크롤바 숨김 (지저분한 선 없애기) */
+            .divisions-slider::-webkit-scrollbar {
+                display: none;
+            }
+            
+            /* 개별 카드 */
+            .slide-card {
+                flex: 0 0 82%; /* 모바일 360px에서 카드가 82%만 차지해서 옆 카드가 18% 보이게 함 */
+                scroll-snap-align: start; /* 넘길 때 카드 시작점에 딱 맞춤 */
+                background-color: #fbfbfb;
+                border-radius: 16px;
+                border: 1px solid #eee;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            /* 슬라이더 끝에 도달했을 때 딱 붙지 않게 여백 추가 */
+            .slide-spacer {
+                flex: 0 0 4px; /* 끝부분 미세 여백 */
+            }
+            
+            .slide-image {
+                width: 100%;
+                aspect-ratio: 16 / 10;
+                background-size: cover;
+                background-position: center;
+                border-radius: 16px 16px 0 0;
+            }
+            
+            .slide-content {
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .slide-content h3 {
+                font-size: 17px;
+                font-weight: 700;
+                color: #000;
+                letter-spacing: -0.5px;
+            }
+            
+            .slide-content p {
+                font-size: 13px;
+                line-height: 1.4;
+                color: #777;
+                margin-bottom: 12px;
+            }
+            
+            /* 본부 소개 버튼 */
+            .slide-btn {
+                background-color: #000;
+                color: #fff;
+                text-decoration: none;
+                font-size: 12px;
+                font-weight: 600;
+                padding: 10px 16px;
+                border-radius: 20px;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+                width: fit-content;
+            }
 
+
+        
             /* Contact Section 백지부터 다시 */
             .contact-section {
                 background-color: #fff;
@@ -501,6 +604,53 @@
         </div>
     </section>
 
+    <section class="capabilities-section">
+        <div class="cap-header">
+            <h2 class="section-title">Core Competencies</h2>
+            <p class="section-desc">
+                Defining the future of interaction. We architect autonomous solutions that drive enterprise innovation globally.
+            </p>
+        </div>
+    
+        <div class="divisions-slider">
+            
+            <div class="slide-card">
+                <div class="slide-image" style="background-image: url('https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&q=80&w=600');"></div>
+                <div class="slide-content">
+                    <h3>Executive Strategy</h3>
+                    <p>Defining corporate vision and global roadmaps.</p>
+                    <a href="#" class="slide-btn">본부 소개
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+    
+            <div class="slide-card">
+                <div class="slide-image" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=600');"></div>
+                <div class="slide-content">
+                    <h3>Digital Innovation</h3>
+                    <p>Optimizing operations through advanced data science.</p>
+                    <a href="#" class="slide-btn">본부 소개
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+    
+            <div class="slide-card">
+                <div class="slide-image" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=600');"></div>
+                <div class="slide-content">
+                    <h3>Global PR & Comms</h3>
+                    <p>Crafting narratives for CMC®’s corporate reputation.</p>
+                    <a href="#" class="slide-btn">본부 소개
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="slide-spacer"></div>
+        </div>
+    </section>
+    
     <section class="contact-section">
         <div class="contact-header">
             <h2 class="contact-title">Get in touch.</h2>
