@@ -7,7 +7,7 @@
     <style>
         body { background: #fff; margin: 0; font-family: -apple-system, sans-serif; }
         .container { padding: 100px 20px; text-align: left; }
-        h1 { font-size: 32px; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 10px; }
+        h1 { font-size: 32px; font-weight: 800; margin-bottom: 10px; }
         p { color: #666; font-size: 14px; line-height: 1.6; margin-bottom: 40px; }
         :root {
     --black: #000000;
@@ -146,12 +146,75 @@
         .gnb.menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
         .gnb.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
+        /* --- 탭 버튼 영역 (가로 스크롤) --- */
+        .tabs-wrapper {
+            margin-bottom: 30px;
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 */
+            scrollbar-width: none; /* 파이어폭스 스크롤바 숨김 */
+            /* 왼쪽 끝에 여백을 주기 위해 패딩 대신 마진 조절 */
+            margin-left: -20px; 
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .tabs-wrapper::-webkit-scrollbar {
+            display: none; /* 크롬, 사파리 스크롤바 숨김 */
+        }
 
-        
-        
-        /* 이미지 갤러리 레이아웃 (나중에 채울 곳) */
-        .gallery { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        .img-box { width: 100%; aspect-ratio: 4/5; background: #eee; border-radius: 12px; }
+        .category-tabs {
+            display: flex;
+            gap: 8px; /* 버튼 사이 간격 */
+            width: max-content; /* 글자 길이에 맞춰 늘어남 */
+        }
+
+        /* 탭 버튼 디자인 */
+        .tab-btn {
+            padding: 10px 20px;
+            border-radius: 30px; /* 완전한 알약 모양 */
+            border: 1px solid #ccc;
+            background-color: #fff;
+            color: #000;
+            font-size: 14px; /* 요청하신 14px */
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        /* 활성화된(선택된) 버튼 디자인 */
+        .tab-btn.active {
+            background-color: #000;
+            color: #fff;
+            border-color: #000;
+            font-weight: 600;
+        }
+
+        /* --- 갤러리 이미지 영역 --- */
+        .gallery-content {
+            display: none; /* 기본적으로 다 숨김 */
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        /* active 클래스가 붙은 갤러리만 나타남 */
+        .gallery-content.active {
+            display: grid;
+            animation: fadeIn 0.4s ease; /* 부드럽게 나타나는 효과 */
+        }
+
+        .img-box {
+            width: 100%;
+            aspect-ratio: 4/5; /* 세로로 긴 세련된 비율 */
+            background-color: #f5f5f5;
+            border-radius: 12px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
@@ -174,7 +237,7 @@
     <nav class="menu-nav">
         <a>Corporate Identity</a>
         <a href="divisions.html" class="menu-link">Our Divisions</a>
-        <a href="benefitapply.html" class="menu-link">Careers</a>
+        <a href="benefitapply.html" class="menu-link">Benefit & Apply</a>
     </nav>
 </div>
     
@@ -182,9 +245,34 @@
         <h1>The CMC® Standard</h1>
         <p>Experience the uncompromising excellence of our global operations.</p>
         
-        <div class="gallery">
-            <div class="img-box"></div>
-            <div class="img-box"></div>
+        <div class="tabs-wrapper">
+            <div class="category-tabs">
+                <button class="tab-btn active" onclick="showGallery('overview', this)">Overview</button>
+                <button class="tab-btn" onclick="showGallery('workspace', this)">Workspace</button>
+                <button class="tab-btn" onclick="showGallery('dining', this)">Dining & Lounge</button>
+                <button class="tab-btn" onclick="showGallery('wellness', this)">Wellness & Play</button>
+            </div>
+        </div>
+
+        <div class="gallery-wrapper">
+            
+            <div id="overview" class="gallery-content active">
+                <div class="img-box" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600');"></div>
+                <div class="img-box" style="background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32d7?auto=format&fit=crop&q=80&w=600');"></div>
+            </div>
+
+            <div id="workspace" class="gallery-content">
+                <div class="img-box" style="background-image: url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=600');"></div>
+            </div>
+
+            <div id="dining" class="gallery-content">
+                <div class="img-box" style="background-image: url('https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=600');"></div>
+            </div>
+
+            <div id="wellness" class="gallery-content">
+                <div class="img-box" style="background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=600');"></div>
+            </div>
+
         </div>
     </div>
     <script>
@@ -217,6 +305,24 @@
                     document.body.style.overflow = '';
                 }
             }
+        <script>
+    // 갤러리 탭 전환 기능
+        function showGallery(categoryId, btnElement) {
+            // 1. 모든 버튼에서 'active' 클래스 제거 (검은색 끄기)
+            const allBtns = document.querySelectorAll('.tab-btn');
+            allBtns.forEach(btn => btn.classList.remove('active'));
+    
+            // 2. 방금 클릭한 버튼에만 'active' 클래스 추가 (검은색 켜기)
+            btnElement.classList.add('active');
+    
+            // 3. 모든 갤러리 내용을 숨기기
+            const allGalleries = document.querySelectorAll('.gallery-content');
+            allGalleries.forEach(gallery => gallery.classList.remove('active'));
+    
+            // 4. 클릭한 카테고리의 갤러리만 보이기
+            document.getElementById(categoryId).classList.add('active');
+            }
+</script>
     </script>
 </body>
 </html>
