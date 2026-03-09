@@ -1,108 +1,191 @@
-<nav class="gnb">
-    <div class="logo">
-        CMC<span class="reg-mark">®</span>
-    </div>
-    <div class="nav-right">
-        <a href="#contact" class="contact-btn">CONTACT</a>
-        <button class="menu-toggle" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
-</nav>
-
-<style>
-/* GNB 기본 스타일 (메인 상단: 투명 배경 + 흰색 텍스트) */
-    .gnb {
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 25px; /* 패딩 넉넉히 주어 잘림 방지 */
-        background: transparent; 
-        transition: all 0.4s ease; /* 부드러운 색상 전환 */
-        z-index: 1000;
-        box-sizing: border-box; /* 패딩 포함 크기 계산 */
-    }
-
-    /* 스크롤 시 변할 클래스 (흰 바탕 + 검정 텍스트) */
-    .gnb.scrolled {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        padding: 15px 25px; /* 스크롤 시 살짝 얇아지게 */
-        border-bottom: 0.5px solid #ddd;
-    }
-
-    /* 로고 & 텍스트 컬러 설정 */
-    .logo, .nav-right .contact-btn {
-        color: #fff; /* 기본 하얀색 */
-        transition: color 0.3s;
-    }
-
-    .gnb.scrolled .logo, 
-    .gnb.scrolled .contact-btn {
-        color: #000; /* 스크롤 시 검정색 */
-    }
-
-    .gnb.scrolled .contact-btn {
-        border-color: #000;
-    }
-
-    .reg-mark {
-        font-size: 8px;
-        vertical-align: super;
-        margin-left: 2px;
-    }
-
-    /* 쓰리바 아이콘 정렬 수정 */
-    .menu-toggle {
-        background: none;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        padding: 5px; /* 터치 영역 확보 */
-        justify-content: center;
-    }
-
-    .menu-toggle span {
-        display: block;
-        width: 24px;
-        height: 2px;
-        background-color: #fff; /* 기본 하얀색 */
-        transition: 0.3s;
-    }
-
-    /* 스크롤 시 쓰리바 색상 변경 */
-    .gnb.scrolled .menu-toggle span {
-        background-color: #000;
-    }
-
-    /* 페이지 하단 여백용 (내용물이 보일 수 있게) */
-    .content-dummy {
-        height: 200vh; /* 스크롤 테스트용 */
-        background: #fff;
-        color: #000;
-        padding: 100px 25px;
-    }
-</style>
-
-<script>
-// 스크롤 감지 스크립트
-    window.addEventListener('scroll', function() {
-        const nav = document.querySelector('.gnb');
-        if (window.scrollY > 50) { // 50px 이상 스크롤 되면
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CMC® | CHATMAN CO.</title>
+    <style>
+        :root {
+            --white: #ffffff;
+            --black: #000000;
+            --accent: #3b82f6;
         }
-    });
 
-    function toggleMenu() {
-        // 메뉴 열기 기능은 다음 단계에서!
-    }
-</script>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* 1. GNB 스타일 (상단 바) */
+        .gnb {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            background: transparent;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+        }
+
+        /* 스크롤 시 변할 스타일 */
+        .gnb.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 25px;
+            border-bottom: 0.5px solid #ddd;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: var(--white);
+            transition: color 0.3s;
+        }
+
+        .gnb.scrolled .logo { color: var(--black); }
+
+        .reg-mark {
+            font-size: 8px;
+            vertical-align: super;
+            margin-left: 2px;
+            font-weight: 400;
+        }
+
+        .nav-right { display: flex; align-items: center; gap: 15px; }
+
+        .contact-btn {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 11px;
+            font-weight: 600;
+            border: 1px solid var(--white);
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .gnb.scrolled .contact-btn {
+            color: var(--black);
+            border-color: var(--black);
+        }
+
+        /* 햄버거 메뉴 아이콘 */
+        .menu-toggle {
+            background: none; border: none; cursor: pointer;
+            display: flex; flex-direction: column; gap: 6px;
+        }
+
+        .menu-toggle span {
+            display: block; width: 24px; height: 1.5px;
+            background-color: var(--white); transition: 0.3s;
+        }
+
+        .gnb.scrolled .menu-toggle span { background-color: var(--black); }
+
+        /* 2. 히어로 섹션 (비디오 배경) */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            background-color: var(--black);
+        }
+
+        .bg-video {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            filter: brightness(0.45);
+        }
+
+        .hero-content { position: relative; z-index: 2; padding: 20px; }
+
+        .hero-content h1 {
+            font-size: 18vw;
+            line-height: 0.85;
+            letter-spacing: -0.05em;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .hero-content p {
+            margin-top: 25px;
+            font-size: 13px;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            font-weight: 300;
+            opacity: 0.8;
+        }
+
+        /* 3. 컨텐츠 섹션 (스크롤 테스트용) */
+        .section-white {
+            background-color: var(--white);
+            color: var(--black);
+            padding: 100px 30px;
+            min-height: 100vh;
+        }
+
+        .section-white h2 { font-size: 2.5rem; letter-spacing: -1px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <nav class="gnb">
+        <div class="logo">CMC<span class="reg-mark">®</span></div>
+        <div class="nav-right">
+            <a href="mailto:contact@chatman.co" class="contact-btn">CONTACT</a>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <video autoplay muted loop playsinline class="bg-video">
+            <source src="bg-video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>CHATMAN<br>CO.</h1>
+            <p>World-Building & Persona Design</p>
+        </div>
+    </section>
+
+    <section class="section-white">
+        <h2>Connect Anything.</h2>
+        <p>실리태번 유저들을 위한 최적의 세계관 설계 솔루션, 챗만컴퍼니입니다.</p>
+        <div style="height: 50vh;"></div> </section>
+
+    <script>
+        // 스크롤 감지: 상단 바 색상 변경
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.gnb');
+            if (window.scrollY > 80) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // 메뉴 열기 (나중에 구현)
+        function toggleMenu() {
+            alert('CMC® 사내 메뉴는 현재 업데이트 중입니다.');
+        }
+    </script>
+</body>
+</html>
