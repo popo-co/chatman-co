@@ -136,45 +136,7 @@
             font-weight: 300;
             opacity: 0.8;
         }
-        /* 등장 애니메이션 */
-        .hero-content {
-                position: relative;
-                z-index: 2;
-                color: #fff;
-            }
-        
-            .reveal-text {
-                font-size: 18vw;
-                line-height: 0.85;
-                letter-spacing: -0.05em;
-                font-weight: 900;
-                opacity: 0; /* 시작은 투명하게 */
-                transform: translateY(30px); /* 아래에서 시작 */
-                animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-            }
-        
-            .reveal-sub {
-                margin-top: 25px;
-                font-size: 13px;
-                letter-spacing: 0.4em;
-                text-transform: uppercase;
-                font-weight: 300;
-                opacity: 0;
-                transform: translateY(20px);
-                animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s forwards; /* 0.4초 뒤 실행 */
-            }
 
-        /* 애니메이션 핵심 로직 */
-            @keyframes fadeInUp {
-                0% {
-                    opacity: 0;
-                    transform: translateY(30px);
-                }
-                100% {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
         /* 3. 컨텐츠 섹션 (스크롤 테스트용) */
             .partners-section {
                 background-color: #fff;
@@ -338,39 +300,63 @@
         </div>
     </section>
 
-<section class="work-section">
-    <div class="work-list">
-        <div class="work-card">
-            <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800');">
-                <div class="card-overlay">
-                    <span class="category">Campaign</span>
-                    <h3>World-Building 101</h3>
-                    <p>실리태번 유저들을 위한 독보적인 페르소나 설계 가이드라인을 제시합니다.</p>
+    <section class="partners-section">
+        <div class="partners-container">
+            <p class="partners-title">TRUSTED BY<br>GLOBAL PARTNERS</p>
+            <div class="marquee">
+                <div class="marquee-content">
+                    <div class="partner-item"><img src="https://www.vectorlogo.zone/logos/microsoft/microsoft-icon.svg"><span>Microsoft</span></div>
+                    <div class="partner-item"><img src="https://www.vectorlogo.zone/logos/google/google-icon.svg"></div>
+                    <div class="partner-item"><img src="https://www.vectorlogo.zone/logos/nvidia/nvidia-icon.svg"></div>
+                    <div class="partner-item"><img src="https://www.vectorlogo.zone/logos/facebook/facebook-official.svg"><span>Meta AI</span></div>
+                    <div class="partner-item"><img src="https://www.vectorlogo.zone/logos/openai/openai-icon.svg"><span>OpenAI</span></div>
+                    <div class="partner-item"><img src="https://www.vectorlogo.zone/logos/apple/apple-icon.svg"><span>Apple</span></div>
+                    <div class="partner-item"><img src="https://www.vectorlogo.zone/logos/bmw/bmw-icon.svg"><span>BMW Group</span></div>
+                    <div class="partner-item"><img src="https://www.vectorlogo.zone/logos/microsoft/microsoft-icon.svg"><span>Microsoft</span></div>
+                    <div class="partner-item"><img src="https://www.vectorlogo.zone/logos/google/google-icon.svg"></div>
+                    <div class="partner-item"><img src="https://www.vectorlogo.zone/logos/nvidia/nvidia-icon.svg"><span>Nvidia</span></div>
+                    <div class="partner-item"><img src="https://www.vectorlogo.zone/logos/facebook/facebook-official.svg"><span>Meta AI</span></div>
+                    <div class="partner-item"><img src="https://www.vectorlogo.zone/logos/openai/openai-icon.svg"><span>OpenAI</span></div>
+                    <div class="partner-item"><img src="https://www.vectorlogo.zone/logos/apple/apple-icon.svg"><span>Apple</span></div>
+                    <div class="partner-item"><img src="https://www.vectorlogo.zone/logos/bmw/bmw-icon.svg"><span>BMW Group</span></div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="work-card">
-            <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800');">
-                <div class="card-overlay">
-                    <span class="category">Event</span>
-                    <h3>43F Library Night</h3>
-                    <p>밤샘 야근러들을 위한 타로 세션과 데이터 분석 워크숍을 개최합니다.</p>
+    <section class="work-section">
+        <div class="work-list">
+            <div class="work-card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800');">
+                    <div class="card-overlay">
+                        <span class="category">Campaign</span>
+                        <h3>World-Building 101</h3>
+                        <p>실리태번 유저들을 위한 독보적인 페르소나 설계 가이드라인을 제시합니다.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="work-card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800');">
+                    <div class="card-overlay">
+                        <span class="category">Event</span>
+                        <h3>43F Library Night</h3>
+                        <p>밤샘 야근러들을 위한 타로 세션과 데이터 분석 워크숍을 개최합니다.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="work-card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800');">
+                    <div class="card-overlay">
+                        <span class="category">Partnership</span>
+                        <h3>Digital Persona Lab</h3>
+                        <p>글로벌 파트너사들과 함께 차세대 AI 인터렉션 디자인을 연구합니다.</p>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="work-card">
-            <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800');">
-                <div class="card-overlay">
-                    <span class="category">Partnership</span>
-                    <h3>Digital Persona Lab</h3>
-                    <p>글로벌 파트너사들과 함께 차세대 AI 인터렉션 디자인을 연구합니다.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
 
     
