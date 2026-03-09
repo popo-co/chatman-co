@@ -199,129 +199,76 @@
                 to { transform: translateX(calc(-50% - 50px)); }
             }
             
-            /* Section 1: Metrics (화이트) */
-            .numbers-section {
+            /* Section 1: Metrics (한 줄 가로 배치) */
+            .metrics-section {
                 background-color: #fff;
-                padding: 100px 25px;
-                display: flex;
-                flex-direction: column;
-                gap: 70px;
-            }
-            .num-label { 
-                font-size: 10px; 
-                letter-spacing: 0.15em; 
-                color: #999; 
-                font-weight: 600; 
-                text-transform: uppercase; 
-            }
-            .num-value { 
-                font-size: 60px; 
-                letter-spacing: -2px; 
-                font-weight: 800; 
-                color: #000; 
-                margin-top: 8px; 
+                padding: 40px 0;
+                border-top: 1px solid #f0f0f0;
+                overflow-x: auto; /* 모바일에서 넘칠 경우 스크롤 허용 */
+                -webkit-overflow-scrolling: touch;
             }
             
-            /* Section 2: Philosophy (초박형 그레이 배경) */
+            .metrics-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 40px;
+                min-width: max-content; /* 아이템들이 줄어들지 않게 */
+                padding: 0 25px;
+            }
+            
+            .metric-item {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .metric-item svg {
+                width: 20px;
+                height: 20px;
+                color: #000;
+            }
+            
+            .metric-item span {
+                font-size: 13px;
+                font-weight: 600;
+                color: #000;
+                white-space: nowrap;
+                letter-spacing: -0.3px;
+            }
+            
+            /* Section 2: Philosophy (기존 애니메이션 코드 유지) */
             .identity-section {
                 background-color: #fcfcfc;
-                padding: 160px 25px;
-                overflow: hidden; /* 애니메이션 시작 전 글자가 안 보이도록 처리 */
-            }
-            
-            .identity-content {
-                max-width: 100%;
-                margin: 0 auto;
+                padding: 140px 25px;
+                overflow: hidden;
             }
             
             .identity-text {
-                font-size: 38px; /* 모바일 가독성을 위해 살짝 조절 */
-                line-height: 1.15;
+                font-size: 38px;
+                line-height: 1.1;
                 letter-spacing: -1.8px;
-                font-weight: 700;
-                color: #ddd; /* 기본 문구 색상 (연하게) */
-                text-align: left;
+                color: #ddd;
             }
             
-      
-            /* 기존 .reveal-line 설정 수정 */
             .reveal-line {
                 display: block;
                 opacity: 0;
-                transform: translateY(30px); /* 20px에서 30px로 늘려 더 역동적으로 */
-                transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); /* animation 대신 transition 사용 */
+                transform: translateY(30px);
+                transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
             }
-            /* 핵심 키워드 (Autonomous Intelligence.) 색상 보정 */
-            .reveal-line.d-3-bold,
-            .reveal-line.d-4-bold {
-                color: #111; /* 강조 문구는 블랙 고정 */
-                font-weight: 800;
-            }
-            /* 스크롤이 닿아 .active 클래스가 추가되면 실행 */
+            
             .identity-section.active .reveal-line {
                 opacity: 1;
                 transform: translateY(0);
             }
             
-            /* 등장 지연 시간 설정 (transition-delay로 변경) */
             .identity-section.active .d-1 { transition-delay: 0.1s; }
-            .identity-section.active .d-2 { transition-delay: 0.3s; }
-            .identity-section.active .d-3-bold { transition-delay: 0.5s; }
-            .identity-section.active .d-4-bold { transition-delay: 0.7s; }
+            .identity-section.active .d-2 { transition-delay: 0.2s; }
+            .identity-section.active .d-3-bold { transition-delay: 0.3s; color: #111; font-weight: 800; }
+            .identity-section.active .d-4-bold { transition-delay: 0.4s; color: #111; font-weight: 800; }
             
-            /* 애니메이션 정의 (아래에서 위로 스르륵) */
-            @keyframes revealUp {
-                0% {
-                    opacity: 0;
-                    transform: translateY(20px);
-                }
-                100% {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            
-            /* 모바일 360px 최적화 */
-            @media (max-width: 375px) {
-                .identity-text {
-                    font-size: 32px; /* 360px 폰에서 제목 크기 조절 */
-                    letter-spacing: -1.5px;
-                }
-            }
-            
-            /* Section 3: Global (화이트) */
-            .global-section {
-                background-color: #fff;
-                padding: 100px 25px 140px 25px;
-            }
-            .section-tag { 
-                font-size: 10px; 
-                letter-spacing: 0.25em; 
-                color: #000; /* 파란색 빼고 블랙으로 가오 통일 */
-                font-weight: 800; 
-                margin-bottom: 60px; 
-            }
-            .location-list { 
-                border-top: 1px solid #f0f0f0; 
-            }
-            .location-item {
-                padding: 35px 0;
-                border-bottom: 1px solid #f0f0f0;
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-end; /* 텍스트 베이스라인 정렬 */
-            }
-            .location-item .city { 
-                font-size: 22px; 
-                font-weight: 800; 
-                letter-spacing: -0.5px; 
-            }
-            .location-item .status { 
-                font-size: 9px; 
-                font-weight: 600; 
-                color: #bbb; 
-                letter-spacing: 0.1em; 
-            }
+
         
     </style>
 </head>
@@ -372,18 +319,20 @@
     </section>
 
 
-    <section class="numbers-section">
-        <div class="number-item">
-            <span class="num-label">Data Points Processed</span>
-            <h2 class="num-value">1.2B+</h2>
-        </div>
-        <div class="number-item">
-            <span class="num-label">Model Precision Rate</span>
-            <h2 class="num-value">99.9%</h2>
-        </div>
-        <div class="number-item">
-            <span class="num-label">Enterprise Solutions</span>
-            <h2 class="num-value">450K</h2>
+    <section class="metrics-section">
+        <div class="metrics-container">
+            <div class="metric-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1v12zM4 22v-7"/></svg>
+                <span>Est. 2026</span>
+            </div>
+            <div class="metric-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span>2,500+ Experts</span>
+            </div>
+            <div class="metric-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-5c1.62-2.2 5-3 5-3"/><path d="M12 15v5s3.03-.55 5-2c2.2-1.62 3-5 3-5"/></svg>
+                <span>$10B+ Revenue</span>
+            </div>
         </div>
     </section>
     
@@ -395,28 +344,6 @@
                 <span class="reveal-line d-3-bold">Autonomous</span>
                 <span class="reveal-line d-4-bold">Intelligence.</span>
             </p>
-        </div>
-    </section>
-    
-    <section class="global-section">
-        <p class="section-tag">GLOBAL OPERATIONS</p>
-        <div class="location-list">
-            <div class="location-item">
-                <span class="city">NEW YORK</span>
-                <span class="status">CORPORATE HQ</span>
-            </div>
-            <div class="location-item">
-                <span class="city">SEOUL</span>
-                <span class="status">R&D CENTER</span>
-            </div>
-            <div class="location-item">
-                <span class="city">TOKYO</span>
-                <span class="status">APAC DIVISION</span>
-            </div>
-            <div class="location-item">
-                <span class="city">LONDON</span>
-                <span class="status">EMEA STRATEGY</span>
-            </div>
         </div>
     </section>
 
@@ -438,23 +365,7 @@
             alert('CMC® 사내 메뉴는 현재 업데이트 중입니다.');
         }
 
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.3 // 섹션이 30% 정도 보일 때 애니메이션 시작
-        };
-    
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-    
-        // 관찰할 대상 지정
-        const identitySection = document.querySelector('.identity-section');
-        observer.observe(identitySection);
+
     </script>
 </body>
 </html>
