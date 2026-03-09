@@ -239,53 +239,50 @@
                 line-height: 1.2;
             }
             
-            /* 헤더를 Flex로 묶어서 양쪽 정렬 */
+            /* 무조건 가로로 양쪽 끝에 붙여버리는 치트키 */
             .contact-header {
                 display: flex;
-                justify-content: space-between;
-                align-items: flex-end; /* 글씨 아래쪽 라인을 딱 맞춤 */
-                margin-bottom: 40px;
-            }
-            .contact-section {
-                background-color: #fff;
-                padding: 100px 20px 120px 20px;
-            }
-            
-            .contact-container {
-                max-width: 100%;
+                flex-direction: row !important; /* 무조건 가로 배치 */
+                justify-content: space-between; /* 양쪽 끝으로 쫙 찢기 */
+                align-items: center;
+                margin-bottom: 30px;
+                width: 100%;
+                flex-wrap: nowrap; /* 절대 밑으로 떨어지지 않게 방어 */
             }
             
             .contact-title {
-                font-size: 28px;
+                font-size: 26px; /* 360px 폰에서 양옆에 들어가게 폰트 살짝 축소 */
                 letter-spacing: -1px;
                 font-weight: 800;
                 color: #000;
+                margin: 0;
+                white-space: nowrap; /* 좁아도 줄바꿈 방지 */
             }
-            /* Or Apply 링크 스타일 */
+            
             .apply-link {
                 display: flex;
                 align-items: center;
-                gap: 6px;
+                gap: 4px; /* 화살표랑 간격 살짝 좁힘 */
                 text-decoration: none;
-                margin-bottom: 5px; /* 타이틀이랑 높이 미세 조정 */
+                white-space: nowrap; /* 링크 줄바꿈 방지 */
+                flex-shrink: 0; /* 화면 좁아져도 안 찌그러지게 영역 고정 */
             }
             
             .apply-link span {
                 font-size: 13px;
                 font-weight: 600;
-                color: #666; /* 너무 튀지 않게 회색 처리 */
+                color: #666;
                 text-transform: uppercase;
                 letter-spacing: 0.05em;
             }
             
-            /* 화살표 호버 액션 (살짝 우측으로 밀림) */
             .apply-link svg {
                 transition: transform 0.2s ease;
             }
             
             .apply-link:active svg {
                 transform: translateX(4px);
-            }            
+            }           
             .contact-form {
                 display: flex;
                 flex-direction: column;
