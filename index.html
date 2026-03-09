@@ -217,17 +217,17 @@
             }
             
             .partner-link span {
-                font-size: 13px;
+                font-size: 14px;
                 letter-spacing: 0.05em;
-                color: #888;
-                font-weight: 500;
+                color: #000;
+                font-weight: 400;
                 text-transform: uppercase;
             }
             
             .arrow-icon {
                 width: 48px;
                 height: 48px;
-                border: 1px solid #eee; /* 화살표를 감싸는 아주 연한 원형 테두리 */
+                border: 1px solid #000; /* 화살표를 감싸는 아주 연한 원형 테두리 */
                 border-radius: 50%;
                 display: flex;
                 justify-content: center;
@@ -370,7 +370,19 @@
             </div>
         </div>
     </section>
+    /* 협력사 버튼 */
+    <section class="partner-link-section">
+        <a href="mailto:contact@chatman.co" class="partner-link">
+            <span>Become our partner</span>
+            <div class="arrow-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </a>
+    </section>
 
+    /* 카드ui */
     <section class="work-section">
         <div class="work-list">
             <div class="work-card">
@@ -381,21 +393,7 @@
                         <p>실리태번 유저들을 위한 독보적인 페르소나 설계 가이드라인을 제시합니다.</p>
                     </div>
                 </div>
-            </div>
-            
-            /* 협력사 버튼 */
-            <section class="partner-link-section">
-                <a href="mailto:contact@chatman.co" class="partner-link">
-                    <span>Become our partner</span>
-                    <div class="arrow-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                </a>
-            </section>
-
-            /* 카드ui */
+            </div>          
             <div class="work-card">
                 <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800');">
                     <div class="card-overlay">
