@@ -222,20 +222,66 @@
                 margin-top: 8px; 
             }
             
-            /* Section 2: Philosophy (초박형 그레이) */
+            /* Section 2: Philosophy (초박형 그레이 배경) */
             .identity-section {
-                background-color: #fcfcfc; /* 더 밝은 그레이로 변경 */
+                background-color: #fcfcfc;
                 padding: 160px 25px;
+                overflow: hidden; /* 애니메이션 시작 전 글자가 안 보이도록 처리 */
             }
+            
+            .identity-content {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            
             .identity-text {
-                font-size: 40px;
+                font-size: 38px; /* 모바일 가독성을 위해 살짝 조절 */
                 line-height: 1.15;
-                letter-spacing: -1.5px;
+                letter-spacing: -1.8px;
                 font-weight: 700;
-                color: #ddd; /* 대비를 낮춰 더 세련되게 */
+                color: #ddd; /* 기본 문구 색상 (연하게) */
+                text-align: left;
             }
-            .identity-text span {
-                color: #111; /* 핵심 키워드만 강조 */
+            
+            /* 애니메이션 공통 스타일 */
+            .reveal-line {
+                display: block; /* 한 줄씩 나오도록 처리 */
+                opacity: 0; /* 시작은 투명하게 */
+                transform: translateY(20px); /* 아래에서 시작 */
+                animation: revealUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; /* 1초 동안 부드럽게 등장 */
+            }
+            
+            /* 핵심 키워드 (Autonomous Intelligence.) 색상 보정 */
+            .reveal-line.d-3-bold,
+            .reveal-line.d-4-bold {
+                color: #111; /* 강조 문구는 블랙 고정 */
+                font-weight: 800;
+            }
+            
+            /* 각 줄의 등장 순서 (지연 시간 설정) */
+            .d-1 { animation-delay: 0.2s; } /* 0.2초 뒤 시작 */
+            .d-2 { animation-delay: 0.4s; } /* 0.4초 뒤 시작 */
+            .d-3-bold { animation-delay: 0.6s; } /* 0.6초 뒤 시작 */
+            .d-4-bold { animation-delay: 0.8s; } /* 0.8초 뒤 시작 */
+            
+            /* 애니메이션 정의 (아래에서 위로 스르륵) */
+            @keyframes revealUp {
+                0% {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            /* 모바일 360px 최적화 */
+            @media (max-width: 375px) {
+                .identity-text {
+                    font-size: 32px; /* 360px 폰에서 제목 크기 조절 */
+                    letter-spacing: -1.5px;
+                }
             }
             
             /* Section 3: Global (화이트) */
@@ -339,8 +385,10 @@
     <section class="identity-section">
         <div class="identity-content">
             <p class="identity-text">
-                Architecting the future of<br>
-                <span>Autonomous Intelligence.</span>
+                <span class="reveal-line d-1">Architecting</span>
+                <span class="reveal-line d-2">the future of</span>
+                <span class="reveal-line d-3-bold">Autonomous</span>
+                <span class="reveal-line d-4-bold">Intelligence.</span>
             </p>
         </div>
     </section>
