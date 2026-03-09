@@ -209,8 +209,27 @@
             border-radius: 12px;
             background-size: cover;
             background-position: center;
+            position: relative; /* 👈 글씨 위치 잡기 위해 필수! */
+            overflow: hidden;   /* 👈 그라데이션이 모서리 밖으로 안 나가게 */
         }
-
+        .img-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px 20px 20px; /* 위쪽 패딩을 넉넉히 줘서 그라데이션 확보 */
+            color: #1a1a1a; /* 텍스트 색상 (검정계열) */
+            font-size: 14px;
+            font-weight: 400; /* 레귤러 */
+            text-align: left;
+            
+            /* 하단에서 위로 자연스럽게 투명해지는 그라데이션 */
+            background: linear-gradient(to top, 
+                rgba(255, 255, 255, 0.8) 0%,   /* 맨 밑은 80% 불투명 흰색 */
+                rgba(255, 255, 255, 0.4) 60%,  /* 중간은 연하게 */
+                rgba(255, 255, 255, 0) 100%    /* 위로 갈수록 완전 투명 */
+            );
+        }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -278,6 +297,10 @@
             <div class="wk-title">👏 <br> Welcome Kit</div>
             <div class="wk-image" style="background-image: url('https://github.com/user-attachments/assets/1ab3b127-4982-4b07-9dca-5d27bc242443');"></div>
         </div>
+        <div class="welcome-kit-wrapper">
+            <div class="wk-title">💻 <br> Welcome Kit</div>
+            <div class="wk-image" style="background-image: url('https://github.com/user-attachments/assets/1ab3b127-4982-4b07-9dca-5d27bc242443');"></div>
+        </div>
         <div class="tabs-wrapper">
             <div class="category-tabs">
                 <button class="tab-btn active" onclick="showGallery('overview', this)">Overview</button>
@@ -295,22 +318,22 @@
                 <div class="img-box" style="background-image: url('https://github.com/user-attachments/assets/f3fa1985-f024-4f6b-9ff3-cf3b04b4987a');"></div>
                 <div class="img-box" style="background-image: url('https://github.com/user-attachments/assets/9694160a-4282-41a6-97d6-1209079cb308');"></div>
                 <div class="img-box" style="background-image: url('https://github.com/user-attachments/assets/1e7d4050-c437-4d8c-a509-d002d0e0cca8');"></div>
-         
-            
-            
             </div>
 
 
             <div id="workspace" class="gallery-content">
                 <div class="img-box" style="background-image: url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=600');"></div>
+                <div class="img-info">Office (11F - 39F)</div>
             </div>
 
             <div id="dining" class="gallery-content">
                 <div class="img-box" style="background-image: url('https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=600');"></div>
+                <div class="img-info">Office (11F - 39F)</div>
             </div>
 
             <div id="wellness" class="gallery-content">
                 <div class="img-box" style="background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=600');"></div>
+                <div class="img-info">Office (11F - 39F)</div>
             </div>
 
         </div>
