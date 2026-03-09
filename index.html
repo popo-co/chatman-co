@@ -198,75 +198,81 @@
                 from { transform: translateX(0); }
                 to { transform: translateX(calc(-50% - 50px)); }
             }
-            
-            /* Section 1: Metrics (한 줄 가로 배치) */
-            .metrics-section {
+            /* Section 1: Metrics Grid (상하 배치) */
+            .metrics-grid {
                 background-color: #fff;
-                padding: 40px 0;
-                border-top: 1px solid #f0f0f0;
-                overflow-x: auto; /* 모바일에서 넘칠 경우 스크롤 허용 */
-                -webkit-overflow-scrolling: touch;
+                padding: 60px 20px;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr); /* 정확히 3등분 */
+                gap: 10px;
+                text-align: center;
             }
             
-            .metrics-container {
+            .metric-block {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+            
+            .icon-wrapper {
+                width: 48px;
+                height: 48px;
+                background-color: #f5f5f5; /* 이미지처럼 아주 연한 회색 박스 */
+                border-radius: 12px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                gap: 40px;
-                min-width: max-content; /* 아이템들이 줄어들지 않게 */
-                padding: 0 25px;
             }
             
-            .metric-item {
-                display: flex;
-                align-items: center;
-                gap: 10px;
+            .metric-block svg {
+                width: 24px;
+                height: 24px;
+                color: #333;
             }
             
-            .metric-item svg {
-                width: 20px;
-                height: 20px;
+            .metric-block span {
+                font-size: 11px;
+                font-weight: 700;
                 color: #000;
-            }
-            
-            .metric-item span {
-                font-size: 13px;
-                font-weight: 600;
-                color: #000;
-                white-space: nowrap;
                 letter-spacing: -0.3px;
+                line-height: 1.2;
             }
             
-            /* Section 2: Philosophy (기존 애니메이션 코드 유지) */
-            .identity-section {
-                background-color: #fcfcfc;
-                padding: 140px 25px;
+            /* Section 2: Industry Ticker (블랙 배경 흐르는 텍스트) */
+            .industry-ticker {
+                background-color: #000;
+                padding: 18px 0;
                 overflow: hidden;
+                display: flex;
             }
             
-            .identity-text {
-                font-size: 38px;
-                line-height: 1.1;
-                letter-spacing: -1.8px;
-                color: #ddd;
+            .ticker-content {
+                display: flex;
+                white-space: nowrap;
+                animation: tickerScroll 25s linear infinite;
             }
             
-            .reveal-line {
-                display: block;
-                opacity: 0;
-                transform: translateY(30px);
-                transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+            .ticker-content span {
+                font-size: 13px;
+                font-weight: 800;
+                color: #fff;
+                text-transform: uppercase;
+                letter-spacing: 0.15em;
+                padding: 0 30px;
             }
             
-            .identity-section.active .reveal-line {
-                opacity: 1;
-                transform: translateY(0);
+            @keyframes tickerScroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
             }
             
-            .identity-section.active .d-1 { transition-delay: 0.1s; }
-            .identity-section.active .d-2 { transition-delay: 0.2s; }
-            .identity-section.active .d-3-bold { transition-delay: 0.3s; color: #111; font-weight: 800; }
-            .identity-section.active .d-4-bold { transition-delay: 0.4s; color: #111; font-weight: 800; }
+            /* Section 3: Identity (기존 유지) */
+            .identity-section { background-color: #fcfcfc; padding: 120px 25px; overflow: hidden; }
+            .identity-text { font-size: 36px; line-height: 1.1; letter-spacing: -1.5px; color: #ddd; }
+            .reveal-line { display: block; opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+            .identity-section.active .reveal-line { opacity: 1; transform: translateY(0); }
+            .identity-section.active .d-3-bold, .identity-section.active .d-4-bold { color: #111; font-weight: 800; }
             
 
         
@@ -319,33 +325,52 @@
     </section>
 
 
-    <section class="metrics-section">
-        <div class="metrics-container">
-            <div class="metric-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1v12zM4 22v-7"/></svg>
-                <span>Est. 2026</span>
-            </div>
-            <div class="metric-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                <span>2,500+ Experts</span>
-            </div>
-            <div class="metric-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-5c1.62-2.2 5-3 5-3"/><path d="M12 15v5s3.03-.55 5-2c2.2-1.62 3-5 3-5"/></svg>
-                <span>$10B+ Revenue</span>
-            </div>
+<section class="metrics-grid">
+    <div class="metric-block">
+        <div class="icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1v12zM4 22v-7"/></svg>
         </div>
-    </section>
-    
-    <section class="identity-section">
-        <div class="identity-content">
-            <p class="identity-text">
-                <span class="reveal-line d-1">Architecting</span>
-                <span class="reveal-line d-2">the future of</span>
-                <span class="reveal-line d-3-bold">Autonomous</span>
-                <span class="reveal-line d-4-bold">Intelligence.</span>
-            </p>
+        <span>Est. 2026</span>
+    </div>
+    <div class="metric-block">
+        <div class="icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-    </section>
+        <span>2,500+ Experts</span>
+    </div>
+    <div class="metric-block">
+        <div class="icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <span>$10B+ Revenue</span>
+    </div>
+</section>
+
+<section class="industry-ticker">
+    <div class="ticker-content">
+        <span>AI Infrastructure</span>
+        <span>Data Strategy</span>
+        <span>Deep Learning</span>
+        <span>Autonomous Intelligence</span>
+        <span>Enterprise Solutions</span>
+        <span>AI Infrastructure</span>
+        <span>Data Strategy</span>
+        <span>Deep Learning</span>
+        <span>Autonomous Intelligence</span>
+        <span>Enterprise Solutions</span>
+    </div>
+</section>
+
+<section class="identity-section">
+    <div class="identity-content">
+        <p class="identity-text">
+            <span class="reveal-line d-1">Architecting</span>
+            <span class="reveal-line d-2">the future of</span>
+            <span class="reveal-line d-3-bold">Autonomous</span>
+            <span class="reveal-line d-4-bold">Intelligence.</span>
+        </p>
+    </div>
+</section>
 
 
     
