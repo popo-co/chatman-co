@@ -115,7 +115,7 @@
             object-fit: cover;
             transform: translate(-50%, -50%);
             z-index: 1;
-            filter: brightness(0.2);
+            filter: brightness(0.8);
         }
 
         .hero-content { position: relative; z-index: 2; padding: 20px; }
@@ -138,21 +138,21 @@
         }
         /* 등장 애니메이션 */
         .reveal-text {
-        font-size: 18vw;
-        line-height: 0.85;
-        letter-spacing: -0.05em;
-        font-weight: 900;
-        animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            font-size: 18vw;
+            line-height: 0.85;
+            letter-spacing: -0.05em;
+            font-weight: 900;
+            animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
         }
 
         .reveal-sub {
-        margin-top: 25px;
-        font-size: 13px;
-        letter-spacing: 0.4em;
-        text-transform: uppercase;
-        font-weight: 300;
-        opacity: 0; /* 처음엔 안 보임 */
-        animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards; /* 0.3초 뒤 등장 */
+            margin-top: 25px;
+            font-size: 13px;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            font-weight: 300;
+            opacity: 0; /* 처음엔 안 보임 */
+            animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards; /* 0.3초 뒤 등장 */
         }
 
 @keyframes fadeInUp {
