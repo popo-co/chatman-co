@@ -198,57 +198,78 @@
                 from { transform: translateX(0); }
                 to { transform: translateX(calc(-50% - 50px)); }
             }
-
-            /* Section 1: Numbers (흰색 배경) */
+            
+            /* Section 1: Metrics (화이트) */
             .numbers-section {
                 background-color: #fff;
                 padding: 100px 25px;
                 display: flex;
                 flex-direction: column;
-                gap: 60px;
+                gap: 70px;
             }
-            .num-label { font-size: 11px; letter-spacing: 0.2em; color: #888; font-weight: 700; text-transform: uppercase; }
-            .num-value { font-size: 64px; letter-spacing: -3px; font-weight: 800; color: #000; margin-top: 5px; }
+            .num-label { 
+                font-size: 10px; 
+                letter-spacing: 0.15em; 
+                color: #999; 
+                font-weight: 600; 
+                text-transform: uppercase; 
+            }
+            .num-value { 
+                font-size: 60px; 
+                letter-spacing: -2px; 
+                font-weight: 800; 
+                color: #000; 
+                margin-top: 8px; 
+            }
             
-            /* Section 2: Identity (연한 그레이 배경) */
+            /* Section 2: Philosophy (초박형 그레이) */
             .identity-section {
-                background-color: #f8f8f8;
-                padding: 140px 25px;
-                text-align: left;
+                background-color: #fcfcfc; /* 더 밝은 그레이로 변경 */
+                padding: 160px 25px;
             }
             .identity-text {
-                font-size: 42px;
-                line-height: 1.1;
-                letter-spacing: -2px;
+                font-size: 40px;
+                line-height: 1.15;
+                letter-spacing: -1.5px;
                 font-weight: 700;
-                color: #ccc; /* 기본 문구는 연하게 */
+                color: #ddd; /* 대비를 낮춰 더 세련되게 */
             }
             .identity-text span {
-                color: #000; /* 핵심 슬로건만 진하게 강조 */
+                color: #111; /* 핵심 키워드만 강조 */
             }
             
-            /* Section 3: Global Network (흰색 배경) */
+            /* Section 3: Global (화이트) */
             .global-section {
                 background-color: #fff;
-                padding: 100px 25px 120px 25px;
+                padding: 100px 25px 140px 25px;
             }
-            .section-tag { font-size: 11px; letter-spacing: 0.3em; color: #3b82f6; font-weight: 800; margin-bottom: 50px; }
-            .location-list { display: flex; flex-direction: column; border-top: 1px solid #eee; }
+            .section-tag { 
+                font-size: 10px; 
+                letter-spacing: 0.25em; 
+                color: #000; /* 파란색 빼고 블랙으로 가오 통일 */
+                font-weight: 800; 
+                margin-bottom: 60px; 
+            }
+            .location-list { 
+                border-top: 1px solid #f0f0f0; 
+            }
             .location-item {
-                padding: 30px 0;
-                border-bottom: 1px solid #eee;
+                padding: 35px 0;
+                border-bottom: 1px solid #f0f0f0;
                 display: flex;
                 justify-content: space-between;
-                align-items: center;
+                align-items: flex-end; /* 텍스트 베이스라인 정렬 */
             }
-            .location-item .city { font-size: 24px; font-weight: 800; letter-spacing: -1px; }
-            .location-item .status { font-size: 10px; font-weight: 700; color: #bbb; letter-spacing: 0.1em; }
-            
-            /* 모바일 360px 최적화 */
-            @media (max-width: 375px) {
-                .num-value { font-size: 52px; }
-                .identity-text { font-size: 34px; }
-                .location-item .city { font-size: 20px; }
+            .location-item .city { 
+                font-size: 22px; 
+                font-weight: 800; 
+                letter-spacing: -0.5px; 
+            }
+            .location-item .status { 
+                font-size: 9px; 
+                font-weight: 600; 
+                color: #bbb; 
+                letter-spacing: 0.1em; 
             }
         
     </style>
@@ -302,15 +323,15 @@
 
     <section class="numbers-section">
         <div class="number-item">
-            <span class="num-label">Narratives Generated</span>
+            <span class="num-label">Data Points Processed</span>
             <h2 class="num-value">1.2B+</h2>
         </div>
         <div class="number-item">
-            <span class="num-label">Persona Accuracy</span>
+            <span class="num-label">Model Precision Rate</span>
             <h2 class="num-value">99.9%</h2>
         </div>
         <div class="number-item">
-            <span class="num-label">Active Universes</span>
+            <span class="num-label">Enterprise Solutions</span>
             <h2 class="num-value">450K</h2>
         </div>
     </section>
@@ -318,30 +339,30 @@
     <section class="identity-section">
         <div class="identity-content">
             <p class="identity-text">
-                We don't just chat,<br>
-                <span>We build worlds.</span>
+                Architecting the future of<br>
+                <span>Autonomous Intelligence.</span>
             </p>
         </div>
     </section>
     
     <section class="global-section">
-        <p class="section-tag">GLOBAL NETWORK</p>
+        <p class="section-tag">GLOBAL OPERATIONS</p>
         <div class="location-list">
             <div class="location-item">
                 <span class="city">NEW YORK</span>
-                <span class="status">HQ / ACTIVE</span>
+                <span class="status">CORPORATE HQ</span>
             </div>
             <div class="location-item">
                 <span class="city">SEOUL</span>
-                <span class="status">LAB / ACTIVE</span>
+                <span class="status">R&D CENTER</span>
             </div>
             <div class="location-item">
                 <span class="city">TOKYO</span>
-                <span class="status">BRANCH / ACTIVE</span>
+                <span class="status">APAC DIVISION</span>
             </div>
             <div class="location-item">
                 <span class="city">LONDON</span>
-                <span class="status">EST. 2026</span>
+                <span class="status">EMEA STRATEGY</span>
             </div>
         </div>
     </section>
