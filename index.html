@@ -404,7 +404,41 @@
                 gap: 4px;
                 width: fit-content;
             }
-
+            /* --- 가로 슬라이더 핵심 --- */
+            .divisions-slider {
+                display: flex;
+                gap: 16px;
+                overflow-x: auto;
+                padding: 0; /* 컨테이너 전체 패딩은 일단 뺍니다 */
+                scroll-snap-type: x mandatory;
+                scroll-padding-left: 20px; /* 자석처럼 붙을 때 기준선을 20px로 설정 */
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+            
+            .divisions-slider::-webkit-scrollbar {
+                display: none;
+            }
+            
+            /* 🚨 첫 번째 카드 왼쪽에 20px 강제 여백 주기 */
+            .slide-card:first-child {
+                margin-left: 20px;
+            }
+            
+            .slide-card {
+                flex: 0 0 82%; 
+                scroll-snap-align: start; 
+                background-color: #fbfbfb;
+                border-radius: 16px;
+                border: 1px solid #eee;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            /* 🚨 마지막 카드 다 넘겼을 때 오른쪽 20px 여백 확보용 */
+            .slide-spacer {
+                flex: 0 0 20px; 
+            }
 
         
             /* Contact Section 백지부터 다시 */
