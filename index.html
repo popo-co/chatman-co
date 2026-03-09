@@ -243,26 +243,26 @@
                 text-align: left;
             }
             
-            /* 애니메이션 공통 스타일 */
+      
+            /* 기존 .reveal-line 설정 수정 */
             .reveal-line {
-                display: block; /* 한 줄씩 나오도록 처리 */
-                opacity: 0; /* 시작은 투명하게 */
-                transform: translateY(20px); /* 아래에서 시작 */
-                animation: revealUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; /* 1초 동안 부드럽게 등장 */
+                display: block;
+                opacity: 0;
+                transform: translateY(30px); /* 20px에서 30px로 늘려 더 역동적으로 */
+                transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); /* animation 대신 transition 사용 */
             }
             
-            /* 핵심 키워드 (Autonomous Intelligence.) 색상 보정 */
-            .reveal-line.d-3-bold,
-            .reveal-line.d-4-bold {
-                color: #111; /* 강조 문구는 블랙 고정 */
-                font-weight: 800;
+            /* 스크롤이 닿아 .active 클래스가 추가되면 실행 */
+            .identity-section.active .reveal-line {
+                opacity: 1;
+                transform: translateY(0);
             }
             
-            /* 각 줄의 등장 순서 (지연 시간 설정) */
-            .d-1 { animation-delay: 0.2s; } /* 0.2초 뒤 시작 */
-            .d-2 { animation-delay: 0.4s; } /* 0.4초 뒤 시작 */
-            .d-3-bold { animation-delay: 0.6s; } /* 0.6초 뒤 시작 */
-            .d-4-bold { animation-delay: 0.8s; } /* 0.8초 뒤 시작 */
+            /* 등장 지연 시간 설정 (transition-delay로 변경) */
+            .identity-section.active .d-1 { transition-delay: 0.1s; }
+            .identity-section.active .d-2 { transition-delay: 0.3s; }
+            .identity-section.active .d-3-bold { transition-delay: 0.5s; }
+            .identity-section.active .d-4-bold { transition-delay: 0.7s; }
             
             /* 애니메이션 정의 (아래에서 위로 스르륵) */
             @keyframes revealUp {
@@ -432,6 +432,24 @@
         function toggleMenu() {
             alert('CMC® 사내 메뉴는 현재 업데이트 중입니다.');
         }
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.3 // 섹션이 30% 정도 보일 때 애니메이션 시작
+        };
+    
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+    
+        // 관찰할 대상 지정
+        const identitySection = document.querySelector('.identity-section');
+        observer.observe(identitySection);
     </script>
 </body>
 </html>
