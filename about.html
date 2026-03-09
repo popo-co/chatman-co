@@ -88,19 +88,19 @@
             <div class="img-box"></div>
         </div>
     </div>
-</body>
-<script>
-function toggleMenu() {
-    const nav = document.querySelector('.gnb');
-    const overlay = document.querySelector('.menu-overlay');
-    nav.classList.toggle('menu-open'); // X자 변신용 클래스 (필요시)
-    overlay.classList.toggle('active');
-    
-    if (overlay.classList.contains('active')) {
-        document.body.style.overflow = 'hidden';
-    } else {
-        document.body.style.overflow = '';
+    <script>
+    function toggleMenu() {
+        const nav = document.querySelector('.gnb');
+        const overlay = document.querySelector('.menu-overlay');
+        nav.classList.toggle('menu-open'); // X자 변신용 클래스 (필요시)
+        overlay.classList.toggle('active');
+        
+        if (overlay.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
     }
-}
-</script>
+    </script>
+</body>
 </html>
