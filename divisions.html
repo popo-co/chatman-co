@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Divisions</title>
@@ -12,7 +13,7 @@
         :root {
     --black: #000000;
     --white: #ffffff;
-}
+    }
 
     /* --- about.html 전용 GNB 스타일 --- */
         .gnb.about-nav {
@@ -758,6 +759,30 @@
             document.getElementById(teamId).classList.add('active');
             evt.currentTarget.classList.add('active');
         }   
+        // 🚨 G, X, L 텍스트를 자동으로 폰트어썸 아이콘으로 바꿔주는 마법의 코드
+        document.addEventListener("DOMContentLoaded", function() {
+            const iconCircles = document.querySelectorAll('.cmc-icon-circle');
+            
+            iconCircles.forEach(circle => {
+                const text = circle.textContent.trim().toUpperCase();
+                
+                // 글씨가 G면 메일 아이콘으로 덮어치기
+                if (text === 'G') {
+                    circle.innerHTML = '<i class="fa-solid fa-envelope"></i>';
+                } 
+                // 글씨가 X면 트위터(X) 아이콘으로 덮어치기
+                else if (text === 'X') {
+                    circle.innerHTML = '<i class="fa-brands fa-x-twitter"></i>';
+                } 
+                // 글씨가 L이면 링크드인 아이콘으로 덮어치기
+                else if (text === 'L') {
+                    circle.innerHTML = '<i class="fa-brands fa-linkedin-in"></i>';
+                }
+            });
+        });
+
+
+        
     </script>
 </body>
 </html>
