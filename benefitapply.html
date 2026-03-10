@@ -202,7 +202,34 @@
             background-color: #cc0000;
             border-color: #cc0000;
         }
-
+        /* 🌟 입사 지원 버튼 컨테이너 */
+        .apply-container {
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        /* 🏷️ 시크한 APPLY NOW 버튼 */
+        .apply-now-btn {
+            display: inline-block;
+            background-color: #111; /* 딥 블랙 */
+            color: #fff;
+            font-size: 16px;
+            font-weight: 800;
+            text-decoration: none;
+            padding: 18px 45px;
+            border-radius: 50px; /* 완전 둥근 디자인 */
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 1px solid #111;
+        }
+        
+        /* 마우스 올렸을 때: 반전 간지 */
+        .apply-now-btn:hover {
+            background-color: transparent;
+            color: #111;
+            transform: scale(1.05); /* 살짝 커지는 효과 */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
         
     </style>
 </head>
@@ -257,7 +284,9 @@
         <span class="welfare-tag">#In_House_Premium_Massage</span>
     </div>
 </section>
-
+<div class="apply-container">
+    <a href="mailto:careers@cmc.com" class="apply-now-btn">APPLY NOW &rarr;</a>
+</div>
     
 </div>    
 
