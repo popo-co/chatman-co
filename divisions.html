@@ -277,29 +277,28 @@
         
         /* 가로 스크롤 컨테이너 */
         .nj-card-container {
-            display: flex; gap: 15px; overflow-x: auto;
-            scrollbar-width: none; padding-right: 50px;
+            display: flex; gap: 10px; overflow-x: auto;
+            scrollbar-width: none;
         }
         .nj-card-container::-webkit-scrollbar { display: none; }
         
-        /* 신규 입사자 카드 (무조건 280px 고정!) */
+        /* 신규 입사자 카드 (무조건 80px 고정!) */
         .nj-profile-card {
-            flex: 0 0 280px; 
+            flex: 0 0 80px; 
             aspect-ratio: 3 / 4; 
-            background-color: #efefef; background-size: cover; background-position: center;
-            border-radius: 26px; position: relative; overflow: hidden;
+            border-radius: 12px; position: relative; overflow: hidden;
         }
         
         /* 신규 입사자용 반투명 정보 박스 */
         .nj-info-box {
-            position: absolute; bottom: 15px; left: 15px; right: 15px;
+            position: absolute; bottom: 6px; left: 4px; right: 4px;
             padding: 20px; background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             border-radius: 22px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
         }
         
-        .new-joiners-wrap { margin-bottom: 60px; padding: 0 20px; }
-        .nj-title { font-size: 22px; font-weight: 800; margin-bottom: 20px; color: #111; }
+        .new-joiners-wrap { margin-bottom: 60px; }
+        .nj-title { font-size: 18px; font-weight: 500; margin-bottom: 20px; color: #111; }
         
         .nj-card { cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .nj-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); }
@@ -354,22 +353,17 @@
     
     <div class="nj-card-container">
         <div class="nj-profile-card nj-card" style="background-image: url('사진주소_입력');" onclick="cmcJumpToTeam('div-digital', 'team-digi-2')">
-            <span class="nj-badge">NEW</span>
-            
+            <span class="nj-badge">🥳</span>            
             <div class="nj-info-box">
-                <p class="nj-division">Digital Innovation</p>
                 <h4 class="cmc-name">Alex Kim</h4>
-                <p class="cmc-role">Product Design / UX Designer</p>
             </div>
         </div>
 
         <div class="nj-profile-card nj-card" style="background-image: url('사진주소_입력');" onclick="cmcJumpToTeam('div-strategy', 'team-strat-2')">
-            <span class="nj-badge">NEW</span>
+            <span class="nj-badge">🥳</span>
             
             <div class="nj-info-box">
-                <p class="nj-division">Strategy Planning</p>
                 <h4 class="cmc-name">Sophia Lee</h4>
-                <p class="cmc-role">Brand Strategy / Manager</p>
             </div>
         </div>
         
