@@ -300,8 +300,12 @@
         .new-joiners-wrap { margin-bottom: 0; }
         .nj-title { font-size: 18px; font-weight: 500; margin-bottom: 20px; color: #111; }
         
-        .nj-card { cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; background-size: contain;  /* 🚨 cover -> contain 으로 변경! */
-    background-repeat: no-repeat; /* [필수] 이미지 반복 안 되게 막음 */ }
+        .nj-card {
+            cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-size: cover !important; /* 1. 무조건 100% 빈틈없이 꽉 채워라! */
+            background-position: center 15% !important; /* 2. 가로는 중앙, 세로는 위에서 15% 지점(얼굴 위치)에 초점을 맞춰라! */
+            background-repeat: no-repeat; /* 3. 이미지 반복 금지 */
+         }
         
         .nj-badge {
             position: absolute; top: 6px; left: 6px;
