@@ -1005,7 +1005,7 @@
             }, 150); // 타이밍 살짝 더 여유 있게 0.15초로 잡았습니다.
         });
 
-        // 🚨 신규 입사자 카드 클릭 시 -> 해당 본부 & 팀으로 다이렉트 워프하는 함수!
+// 🚨 신규 입사자 카드 클릭 시 -> 해당 본부 & 팀으로 다이렉트 워프하는 함수!
         function cmcJumpToTeam(divId, teamId) {
             const targetDivPane = document.getElementById(divId);
             const targetDivBtn = document.querySelector(`.div-tab-btn[onclick*="${divId}"]`);
@@ -1026,9 +1026,16 @@
                     targetDivPane.querySelectorAll('.team-tab-btn').forEach(b => b.classList.remove('active'));
                     targetTeamPane.classList.add('active');
                     targetTeamBtn.classList.add('active');
+
+                    // 🌟 [추가된 마법] 하위 '팀 탭'도 정중앙으로 스크롤!
+                    const teamNavContainer = targetDivPane.querySelector('.team-tab-nav');
+                    if(teamNavContainer) {
+                        const teamScrollLeftPos = targetTeamBtn.offsetLeft - (teamNavContainer.offsetWidth / 2) + (targetTeamBtn.offsetWidth / 2);
+                        teamNavContainer.scrollTo({ left: teamScrollLeftPos, behavior: 'smooth' });
+                    }
                 }
         
-                // [STEP 3] 가로 메뉴 탭 정중앙 정렬 간지
+                // [STEP 3] 상위 '본부 탭' 정중앙 정렬 간지
                 const navContainer = document.querySelector('.division-tab-nav');
                 if(navContainer) {
                     const scrollLeftPos = targetDivBtn.offsetLeft - (navContainer.offsetWidth / 2) + (targetDivBtn.offsetWidth / 2);
