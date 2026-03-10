@@ -818,32 +818,7 @@
             }
         }
 
-        // 🚨 팀(2뎁스)은 절대 안 건드리고, [본부] 탭만 정확하게 찾아 열어주는 스크립트
-        window.addEventListener('DOMContentLoaded', () => {
-            // 1. 주소창 맨 뒤에 있는 본부 아이디 가져오기 (예: div-pr)
-            const hash = window.location.hash.replace('#', ''); 
-            
-            if (hash) {
-                // 2. 화면에 있는 대상 [본부] 요소만 찾기
-                const targetDivPane = document.getElementById(hash);
-                const targetDivBtn = document.querySelector(`.div-tab-btn[onclick*="${hash}"]`);
-                
-                if (targetDivPane && targetDivBtn) {
-                    // 3. 기존에 열려있던 본부 탭들 다 끄기
-                    document.querySelectorAll('.division-tab-pane').forEach(p => p.classList.remove('active'));
-                    document.querySelectorAll('.div-tab-btn').forEach(b => b.classList.remove('active'));
-                    
-                    // 4. 주소창이 지목한 [본부]만 딱 켜기! (팀은 HTML에 있는 active 설정대로 알아서 뜸 ㅡㅡ!)
-                    targetDivPane.classList.add('active');
-                    targetDivBtn.classList.add('active');
-                    
-                    // 5. 열린 본부 위치로 스크롤 스르륵 이동
-                    setTimeout(() => {
-                        targetDivBtn.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 100);
-                }
-            }
-        });
+
 
         
     </script>
