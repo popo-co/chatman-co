@@ -151,7 +151,7 @@
         
         .division-tab-nav {
             display: flex; gap: 20px; overflow-x: auto;
-            padding: 0 0 20px; scrollbar-width: none;
+            scrollbar-width: none;
         }
         .division-tab-nav::-webkit-scrollbar { display: none; }
         
@@ -283,12 +283,22 @@
     <div class="division-tab-nav">
         <button class="div-tab-btn active" onclick="cmcSwitchDiv(event, 'div-strategy')">Strategy Planning</button>
         <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-digital')">Digital Innovation</button>
+        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-digital')">Global PR & Comms</button>
+        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-digital')">Business Development & Sales</button>
+        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-digital')">Strategic Marketing</button>
+        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-digital')">Corporate Legal</button>
+        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-digital')">Creative Design</button>
+        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-digital')">Corporate Operations & Support</button>
+        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-digital')">Facilities Management HQ</button>
+        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-digital')">Strategic Intelligence Bureau</button>
     </div>
 
     <div id="div-strategy" class="division-tab-pane active">        
         <div class="team-tab-nav">
-            <button class="team-tab-btn active" onclick="cmcSwitchTeam(event, 'team-strat-1', 'div-strategy')">Core Strategy Team</button>
-            <button class="team-tab-btn" onclick="cmcSwitchTeam(event, 'team-strat-2', 'div-strategy')">Market Research</button>
+            <button class="team-tab-btn active" onclick="cmcSwitchTeam(event, 'team-strat-1', 'div-strategy')">Executive</button>
+            <button class="team-tab-btn" onclick="cmcSwitchTeam(event, 'team-strat-2', 'div-strategy')">Brand Strategy</button>
+            <button class="team-tab-btn" onclick="cmcSwitchTeam(event, 'team-strat-3', 'div-strategy')">Special Projects</button>
+            <button class="team-tab-btn" onclick="cmcSwitchTeam(event, 'team-strat-4', 'div-strategy')">Strategy Planning</button>
         </div>
         <div id="team-strat-1" class="team-tab-pane active">
             <div class="division-card-container">
@@ -307,8 +317,39 @@
         </div>
 
         <div id="team-strat-2" class="team-tab-pane">
-            <div class="division-card-container"><p style="color:#999;">Updating...</p></div>
+            <div class="division-card-container">
+                <div class="cmc-profile-card" style="background-image: url('Adrian_사진주소');">
+                    <div class="cmc-info-box">
+                        <div class="cmc-info-top">
+                            <h4 class="cmc-name">Adrian Vale2</h4>
+                            <div class="cmc-socials">
+                                <span class="cmc-icon-circle">G</span><span class="cmc-icon-circle">X</span><span class="cmc-icon-circle">L</span>
+                            </div>
+                        </div>
+                        <p class="cmc-role">Strategy Planning / Senior Manager</p>
+                    </div>
+                </div>
+                <div class="cmc-profile-card" style="background-image: url('Adrian_사진주소');">
+                    <div class="cmc-info-box">
+                        <div class="cmc-info-top">
+                            <h4 class="cmc-name">Adrian Vale3</h4>
+                            <div class="cmc-socials">
+                                <span class="cmc-icon-circle">G</span><span class="cmc-icon-circle">X</span><span class="cmc-icon-circle">L</span>
+                            </div>
+                        </div>
+                        <p class="cmc-role">Strategy Planning / Senior Manager</p>
+                    </div>
+                </div>
+                
+            </div>            
         </div>
+
+
+
+
+
+
+        
     </div>
 
     <div id="div-digital" class="division-tab-pane">
@@ -345,7 +386,7 @@
             }
         }
     
-                // 메뉴 열기/닫기 로직 교체
+            // 메뉴 열기/닫기 로직 교체
             function toggleMenu() {
                 const nav = document.querySelector('.gnb');
                 const overlay = document.querySelector('.menu-overlay');
