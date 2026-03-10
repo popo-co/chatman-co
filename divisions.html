@@ -150,9 +150,8 @@
         .cmc-division-section { padding: 60px 0; background-color: #fff; }
         
         .division-tab-nav {
-            display: flex; gap: 25px; overflow-x: auto;
-            padding: 0 20px 15px; scrollbar-width: none;
-            border-bottom: 1px solid #f0f0f0;
+            display: flex; gap: 20px; overflow-x: auto;
+            padding: 0 0 20px; scrollbar-width: none;
         }
         .division-tab-nav::-webkit-scrollbar { display: none; }
         
@@ -168,7 +167,7 @@
         }
         
         /* 탭 전환 애니메이션 */
-        .division-tab-pane { display: none; padding: 40px 20px; animation: cmcSlideUp 0.4s ease-out; }
+        .division-tab-pane { display: none; padding: 20px 0; animation: cmcSlideUp 0.4s ease-out; }
         .division-tab-pane.active { display: block; }
         @keyframes cmcSlideUp {
             from { opacity: 0; transform: translateY(15px); }
@@ -178,7 +177,7 @@
         /* 카드 가로 스크롤 레이아웃 */
         .division-card-container {
             display: flex; gap: 15px; overflow-x: auto;
-            scrollbar-width: none; padding-right: 50px;
+            scrollbar-width: none; padding-right: 10px;
         }
         .division-card-container::-webkit-scrollbar { display: none; }
         
