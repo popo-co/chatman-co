@@ -448,42 +448,6 @@
                     document.body.style.overflow = '';
                 }
             }
-    // 갤러리 탭 전환 기능
-        function showGallery(categoryId, btnElement) {
-            // 1. 모든 버튼에서 'active' 클래스 제거 (검은색 끄기)
-            const allBtns = document.querySelectorAll('.tab-btn');
-            allBtns.forEach(btn => btn.classList.remove('active'));
-    
-            // 2. 방금 클릭한 버튼에만 'active' 클래스 추가 (검은색 켜기)
-            btnElement.classList.add('active');
-    
-            // 3. 모든 갤러리 내용을 숨기기
-            const allGalleries = document.querySelectorAll('.gallery-content');
-            allGalleries.forEach(gallery => gallery.classList.remove('active'));
-    
-            // 4. 클릭한 카테고리의 갤러리만 보이기
-            document.getElementById(categoryId).classList.add('active');
-            }
-    // 🚨 URL 꼬리표 읽어서 해당 탭 자동 오픈하는 마법의 스크립트 (수정 절대 금지!)
-    window.addEventListener('DOMContentLoaded', () => {
-        // 1. 주소창에서 # 뒤에 있는 글자만 쏙 빼오기 (#만 지우는 거니까 건드리지 마세요!)
-        const hash = window.location.hash.replace('#', ''); 
-        
-        if (hash) {
-            // 2. 알아서 해당 이름이 들어간 탭 버튼 찾기 (hash라는 변수를 그대로 두세요!)
-            const targetBtn = document.querySelector(`.div-tab-btn[onclick*="${hash}"]`);
-            
-            if (targetBtn) {
-                // 3. 찾았으면 강제로 클릭 이벤트 발생!
-                targetBtn.click(); 
-                
-                // 탭 있는 위치로 스크롤 스르륵 부드럽게 내려주기
-                targetBtn.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        }
-    });
-
-
         
     </script>
 </body>
