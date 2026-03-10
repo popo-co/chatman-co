@@ -219,7 +219,7 @@
  
         /* 🔵 2-Depth: 팀 탭 네비게이션 (알약 모양 버튼 스타일) */
         .team-tab-nav {
-            display: flex; gap: 10px; padding: 0 0 24px;
+            display: flex; gap: 4px; padding: 0 0 24px;
             overflow-x: auto; scrollbar-width: none;
         }
         .team-tab-nav::-webkit-scrollbar { display: none; }
@@ -283,14 +283,14 @@
     <div class="division-tab-nav">
         <button class="div-tab-btn active" onclick="cmcSwitchDiv(event, 'div-strategy')">Strategy Planning</button>
         <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-digital')">Digital Innovation</button>
-        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-digital')">Global PR & Comms</button>
-        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-digital')">Business Development & Sales</button>
-        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-digital')">Strategic Marketing</button>
-        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-digital')">Corporate Legal</button>
-        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-digital')">Creative Design</button>
-        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-digital')">Corporate Operations & Support</button>
-        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-digital')">Facilities Management HQ</button>
-        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-digital')">Strategic Intelligence Bureau</button>
+        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-pr')">Global PR & Comms</button>
+        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-sales')">Business Development & Sales</button>
+        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-marketing')">Strategic Marketing</button>
+        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-legal')">Corporate Legal</button>
+        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-design')">Creative Design</button>
+        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-support')">Corporate Operations & Support</button>
+        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-hq')">Facilities Management HQ</button>
+        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-intell')">Strategic Intelligence Bureau</button>
     </div>
 
     <div id="div-strategy" class="division-tab-pane active">        
@@ -328,24 +328,40 @@
                         </div>
                         <p class="cmc-role">Strategy Planning / Senior Manager</p>
                     </div>
-                </div>
+                </div>               
+            </div>            
+        </div>
+
+        <div id="team-strat-3" class="team-tab-pane">
+            <div class="division-card-container">
                 <div class="cmc-profile-card" style="background-image: url('Adrian_사진주소');">
                     <div class="cmc-info-box">
                         <div class="cmc-info-top">
-                            <h4 class="cmc-name">Adrian Vale3</h4>
+                            <h4 class="cmc-name">Adrian Vale2</h4>
                             <div class="cmc-socials">
                                 <span class="cmc-icon-circle">G</span><span class="cmc-icon-circle">X</span><span class="cmc-icon-circle">L</span>
                             </div>
                         </div>
                         <p class="cmc-role">Strategy Planning / Senior Manager</p>
                     </div>
-                </div>
-                
+                </div>               
             </div>            
         </div>
-
-
-
+        <div id="team-strat-4" class="team-tab-pane">
+            <div class="division-card-container">
+                <div class="cmc-profile-card" style="background-image: url('Adrian_사진주소');">
+                    <div class="cmc-info-box">
+                        <div class="cmc-info-top">
+                            <h4 class="cmc-name">Adrian Vale2</h4>
+                            <div class="cmc-socials">
+                                <span class="cmc-icon-circle">G</span><span class="cmc-icon-circle">X</span><span class="cmc-icon-circle">L</span>
+                            </div>
+                        </div>
+                        <p class="cmc-role">Strategy Planning / Senior Manager</p>
+                    </div>
+                </div>               
+            </div>            
+        </div>
 
 
 
