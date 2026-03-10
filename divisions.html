@@ -146,6 +146,69 @@
         .gnb.menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
         .gnb.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
+        /* 1. 전체 부서 레이아웃 */
+        .dept-row { margin-bottom: 60px; padding-left: 20px; }
+        .dept-title {
+            font-size: 14px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.1em; margin-bottom: 25px; color: #333;
+        }
+        
+        /* 2. 가로 스크롤 (옆에 살짝 보이게 설정) */
+        .card-scroll-container {
+            display: flex; gap: 15px; overflow-x: auto;
+            scrollbar-width: none; -ms-overflow-style: none;
+            padding-right: 40px; /* 마지막 카드 여백 */
+        }
+        .card-scroll-container::-webkit-scrollbar { display: none; }
+        
+        /* 3. 프로필 카드 메인 */
+        .profile-card {
+            flex: 0 0 300px; /* 👈 이 너비가 '옆에 살짝 보임'을 결정합니다 */
+            height: 420px;
+            background-color: #e5e5e5; /* 사진 없을 때 배경색 */
+            background-size: cover; background-position: center;
+            border-radius: 25px; position: relative;
+            overflow: hidden;
+        }
+        
+        /* 4. 하단 화이트 반투명 박스 (핵심!) */
+        .profile-info-box {
+            position: absolute;
+            bottom: 15px; left: 15px; right: 15px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.85); /* 👈 불투명한 화이트 */
+            backdrop-filter: blur(10px); /* 👈 뒤쪽 배경 흐리게 */
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* 5. 이름 & 아이콘 정렬 */
+        .info-top {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 8px;
+        }
+        .name { font-size: 18px; font-weight: 800; color: #000; margin: 0; }
+        
+        .social-links { display: flex; gap: 8px; }
+        .icon-circle {
+            width: 28px; height: 28px;
+            background-color: #f0f0f0; /* 연한 회색 동그라미 */
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none; color: #666; font-size: 12px;
+            transition: 0.3s;
+        }
+        .icon-circle:hover { background-color: #ddd; }
+        
+        /* 6. 팀/직함 텍스트 */
+        .role {
+            font-size: 13px; color: #333; font-weight: 400;
+            margin: 0; opacity: 0.9;
+        }
+
+
+        
     </style>
 </head>
 <body>
@@ -173,9 +236,32 @@
 </div>
     
 <div class="container">
-    <h1>The CMC® Standard</h1>
-    <p>Experience the uncompromising excellence of our global operations.</p>
+    <h1>Divisions</h1>
+    <p>Defining the new elite across every frontier.</p>
+<section class="division-team">
+    <div class="dept-row">
+        <h3 class="dept-title">Strategy Planning</h3>        
+        <div class="card-scroll-container">
+            <div class="profile-card" style="background-image: url('사람사진_주소');">
+                <div class="profile-info-box">
+                    <div class="info-top">
+                        <h4 class="name">Adrian Vale</h4>
+                        <div class="social-links">
+                            <a href="#" class="icon-circle"><i class="fa-solid fa-envelope"></i></a>
+                            <a href="#" class="icon-circle"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="#" class="icon-circle"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <p class="role">Strategy Planning Team / Senior Manager</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
+
+
+    
+</section>
 
 
 
