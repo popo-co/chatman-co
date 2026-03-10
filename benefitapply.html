@@ -148,14 +148,7 @@
 
         /* ========================================== */
         /* 🌟 복지 태그 클라우드 (Welfare) 전용 스타일 */
-        /* ========================================== */
-        
-        .cmc-welfare-section {
-            padding: 80px 20px 100px 20px;
-            background-color: #fafafa; /* 아주 살짝 쿨한 느낌의 밝은 그레이 */
-            text-align: center;
-        }
-        
+        /* ========================================== */        
         .welfare-header { margin-bottom: 45px; }
         .welfare-title { font-size: 34px; font-weight: 900; color: #111; margin: 0 0 12px 0; letter-spacing: -0.5px; }
         .welfare-subtitle { font-size: 16px; color: #666; margin: 0; }
@@ -166,7 +159,7 @@
             margin: 0 auto;
             display: flex;
             flex-wrap: wrap; /* 공간 모자라면 알아서 밑으로 내려감 */
-            justify-content: center;
+            justify-content: left;
             gap: 12px; /* 태그들 사이 간격 */
         }
         
@@ -183,30 +176,6 @@
             transition: all 0.3s ease;
         }
         
-        /* 마우스 올렸을 때 블랙 간지로 변신 */
-        .welfare-tag:hover {
-            background-color: #111;
-            color: #fff;
-            border-color: #111;
-            transform: translateY(-4px); /* 살짝 위로 붕 뜸 */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* 🚨 특별 강조 태그 (사수 패기 이벤트 전용) */
-        .highlight-tag {
-            background-color: #ff3333;
-            color: #fff;
-            border-color: #ff3333;
-        }
-        .highlight-tag:hover {
-            background-color: #cc0000;
-            border-color: #cc0000;
-        }
-        /* 🌟 입사 지원 버튼 컨테이너 */
-        .apply-container {
-            margin-top: 60px;
-            text-align: center;
-        }
         
         /* 🏷️ 시크한 APPLY NOW 버튼 */
         .apply-now-btn {
@@ -261,11 +230,6 @@
         <h1>Benefit & Apply</h1>
         <p>Experience the uncompromising excellence of our global operations.</p>
 <section class="cmc-welfare-section">
-    <div class="welfare-header">
-        <h2 class="welfare-title">Life at CMC®</h2>
-        <p class="welfare-subtitle">Limitless perks for the absolute elite.</p>
-    </div>
-
     <div class="welfare-tag-cloud">
         <span class="welfare-tag">#32Hr_Workweek_&_Flex</span>
         <span class="welfare-tag">#Work_From_Anywhere</span>
