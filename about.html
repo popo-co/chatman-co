@@ -448,7 +448,22 @@
                     document.body.style.overflow = '';
                 }
             }
-        
+            // 갤러리 탭 전환 기능
+        function showGallery(categoryId, btnElement) {
+            // 1. 모든 버튼에서 'active' 클래스 제거 (검은색 끄기)
+            const allBtns = document.querySelectorAll('.tab-btn');
+            allBtns.forEach(btn => btn.classList.remove('active'));
+    
+            // 2. 방금 클릭한 버튼에만 'active' 클래스 추가 (검은색 켜기)
+            btnElement.classList.add('active');
+    
+            // 3. 모든 갤러리 내용을 숨기기
+            const allGalleries = document.querySelectorAll('.gallery-content');
+            allGalleries.forEach(gallery => gallery.classList.remove('active'));
+    
+            // 4. 클릭한 카테고리의 갤러리만 보이기
+            document.getElementById(categoryId).classList.add('active');
+            }
     </script>
 </body>
 </html>
