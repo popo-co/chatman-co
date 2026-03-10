@@ -464,6 +464,24 @@
             // 4. 클릭한 카테고리의 갤러리만 보이기
             document.getElementById(categoryId).classList.add('active');
             }
+    // 🚨 URL 꼬리표 읽어서 해당 탭 자동 오픈하는 마법의 스크립트
+        window.addEventListener('DOMContentLoaded', () => {
+            // 1. 주소창에서 # 뒤에 있는 글자만 쏙 빼오기 (예: div-digital)
+            const hash = window.location.hash.replace('#', ''); 
+            
+            if (hash) {
+                // 2. 탭 버튼들 중에서 onclick 속성에 해당 꼬리표 이름이 들어간 버튼 찾기
+                const targetBtn = document.querySelector(`.div-tab-btn[onclick*="${hash}"]`);
+                
+                if (targetBtn) {
+                    // 3. 찾았으면 사람이 마우스로 누른 것처럼 강제로 클릭 이벤트 발생!
+                    targetBtn.click(); 
+                    
+                    // (보너스 간지) 탭 있는 위치로 스크롤 스르륵 부드럽게 내려주기
+                    targetBtn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+});
     </script>
 </body>
 </html>
