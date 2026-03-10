@@ -219,14 +219,14 @@
  
         /* 🔵 2-Depth: 팀 탭 네비게이션 (알약 모양 버튼 스타일) */
         .team-tab-nav {
-            display: flex; gap: 10px; padding: 0 20px 25px;
+            display: flex; gap: 10px; padding: 0 0 24px;
             overflow-x: auto; scrollbar-width: none;
         }
         .team-tab-nav::-webkit-scrollbar { display: none; }
         
         .team-tab-btn {
             padding: 8px 18px; border-radius: 20px;
-            background-color: #f5f5f5; border: 1px solid #eaeaea;
+            background-color: #fff; border: 1px solid #eaeaea;
             font-size: 13px; color: #888; cursor: pointer;
             transition: all 0.2s ease; white-space: nowrap;
         }
@@ -235,7 +235,6 @@
         /* 선택된 팀 버튼은 시크한 블랙으로! */
         .team-tab-btn.active {
             background-color: #1a1a1a; color: #fff;
-            border-color: #1a1a1a; font-weight: 600;
         }
         
         /* 팀 컨텐츠 전환 애니메이션 */
@@ -286,13 +285,11 @@
         <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-digital')">Digital Innovation</button>
     </div>
 
-    <div id="div-strategy" class="division-tab-pane active">
-        
+    <div id="div-strategy" class="division-tab-pane active">        
         <div class="team-tab-nav">
             <button class="team-tab-btn active" onclick="cmcSwitchTeam(event, 'team-strat-1', 'div-strategy')">Core Strategy Team</button>
             <button class="team-tab-btn" onclick="cmcSwitchTeam(event, 'team-strat-2', 'div-strategy')">Market Research</button>
         </div>
-
         <div id="team-strat-1" class="team-tab-pane active">
             <div class="division-card-container">
                 <div class="cmc-profile-card" style="background-image: url('Adrian_사진주소');">
