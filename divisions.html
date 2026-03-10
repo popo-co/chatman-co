@@ -197,6 +197,12 @@
             backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             border-radius: 22px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
         }
+
+        .cmc-profile-card:only-child {
+            flex: 1 1 auto !important; /* 혼자 있을 땐 빈 공간을 다 먹어라! */
+            max-width: 450px !important; /* 단, PC에서 무식하게 커지는 건 방지 (아이폰 꽉 차는 사이즈) */
+            width: 100% !important;
+        }
         
         .cmc-info-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
         .cmc-name { font-size: 18px; font-weight: 800; color: #000; margin: 0; }
