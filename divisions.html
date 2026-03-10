@@ -146,67 +146,72 @@
         .gnb.menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
         .gnb.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
-        /* 1. 전체 부서 레이아웃 */
-        .dept-row { margin-bottom: 60px; padding-left: 20px; }
-        .dept-title {
-            font-size: 14px; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 0.1em; margin-bottom: 25px; color: #333;
+         /* 전체 섹션 및 탭 네비게이션 */
+        .cmc-division-section { padding: 60px 0; background-color: #fff; }
+        
+        .division-tab-nav {
+            display: flex; gap: 25px; overflow-x: auto;
+            padding: 0 20px 15px; scrollbar-width: none;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .division-tab-nav::-webkit-scrollbar { display: none; }
+        
+        .div-tab-btn {
+            border: none; background: none; font-size: 15px; font-weight: 500;
+            color: #bbb; white-space: nowrap; cursor: pointer;
+            transition: 0.3s; padding-bottom: 12px; position: relative;
+        }
+        .div-tab-btn.active { color: #000; font-weight: 800; }
+        .div-tab-btn.active::after {
+            content: ''; position: absolute; bottom: -1px; left: 0;
+            width: 100%; height: 3px; background: #000;
         }
         
-        /* 2. 가로 스크롤 (옆에 살짝 보이게 설정) */
-        .card-scroll-container {
+        /* 탭 전환 애니메이션 */
+        .division-tab-pane { display: none; padding: 40px 20px; animation: cmcSlideUp 0.4s ease-out; }
+        .division-tab-pane.active { display: block; }
+        @keyframes cmcSlideUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* 카드 가로 스크롤 레이아웃 */
+        .division-card-container {
             display: flex; gap: 15px; overflow-x: auto;
-            scrollbar-width: none; -ms-overflow-style: none;
-            padding-right: 40px; /* 마지막 카드 여백 */
+            scrollbar-width: none; padding-right: 50px;
         }
-        .card-scroll-container::-webkit-scrollbar { display: none; }
+        .division-card-container::-webkit-scrollbar { display: none; }
         
-        /* 3. 프로필 카드 메인 */
-        .profile-card {
-            flex: 0 0 300px; /* 👈 이 너비가 '옆에 살짝 보임'을 결정합니다 */
-            height: 420px;
-            background-color: #e5e5e5; /* 사진 없을 때 배경색 */
+        /* 프로필 카드 본체 */
+        .cmc-profile-card {
+            flex: 0 0 295px; /* 👈 옆 카드 살짝 보이게 만드는 핵심 수치 */
+            height: 410px; background-color: #efefef;
             background-size: cover; background-position: center;
-            border-radius: 25px; position: relative;
-            overflow: hidden;
+            border-radius: 26px; position: relative; overflow: hidden;
         }
         
-        /* 4. 하단 화이트 반투명 박스 (핵심!) */
-        .profile-info-box {
-            position: absolute;
-            bottom: 15px; left: 15px; right: 15px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.85); /* 👈 불투명한 화이트 */
-            backdrop-filter: blur(10px); /* 👈 뒤쪽 배경 흐리게 */
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+        /* 하단 반투명 정보창 (Glassmorphism) */
+        .cmc-info-box {
+            position: absolute; bottom: 15px; left: 15px; right: 15px;
+            padding: 20px; background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-radius: 22px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
         }
         
-        /* 5. 이름 & 아이콘 정렬 */
-        .info-top {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 8px;
-        }
-        .name { font-size: 18px; font-weight: 800; color: #000; margin: 0; }
+        .cmc-info-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .cmc-name { font-size: 18px; font-weight: 800; color: #000; margin: 0; }
         
-        .social-links { display: flex; gap: 8px; }
-        .icon-circle {
-            width: 28px; height: 28px;
-            background-color: #f0f0f0; /* 연한 회색 동그라미 */
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            text-decoration: none; color: #666; font-size: 12px;
-            transition: 0.3s;
+        /* 소셜 아이콘 동그라미 */
+        .cmc-socials { display: flex; gap: 7px; }
+        .cmc-icon-circle {
+            width: 28px; height: 28px; background-color: #ededed;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 11px; color: #666; font-weight: 700;
         }
-        .icon-circle:hover { background-color: #ddd; }
         
-        /* 6. 팀/직함 텍스트 */
-        .role {
-            font-size: 13px; color: #333; font-weight: 400;
-            margin: 0; opacity: 0.9;
+        .cmc-role { font-size: 13px; color: #333; font-weight: 400; margin: 0; opacity: 0.9;
         }
-
+ 
 
         
     </style>
@@ -238,29 +243,49 @@
 <div class="container">
     <h1>Divisions</h1>
     <p>Defining the new elite across every frontier.</p>
-<section class="division-team">
-    <div class="dept-row">
-        <h3 class="dept-title">Strategy Planning</h3>        
-        <div class="card-scroll-container">
-            <div class="profile-card" style="background-image: url('사람사진_주소');">
-                <div class="profile-info-box">
-                    <div class="info-top">
-                        <h4 class="name">Adrian Vale</h4>
-                        <div class="social-links">
-                            <a href="#" class="icon-circle"><i class="fa-solid fa-envelope"></i></a>
-                            <a href="#" class="icon-circle"><i class="fa-brands fa-x-twitter"></i></a>
-                            <a href="#" class="icon-circle"><i class="fa-brands fa-linkedin-in"></i></a>
+    
+<section class="cmc-division-section">
+    <div class="division-tab-nav">
+        <button class="div-tab-btn active" onclick="cmcSwitchTab(event, 'strategy')">Strategy Planning</button>
+        <button class="div-tab-btn" onclick="cmcSwitchTab(event, 'digital')">Digital Innovation</button>
+        <button class="div-tab-btn" onclick="cmcSwitchTab(event, 'global')">Global Operations</button>
+    </div>
+
+    <div id="strategy" class="division-tab-pane active">
+        <div class="division-card-container">
+            <div class="cmc-profile-card" style="background-image: url('여기에_사진_주소');">
+                <div class="cmc-info-box">
+                    <div class="cmc-info-top">
+                        <h4 class="cmc-name">Adrian Vale</h4>
+                        <div class="cmc-socials">
+                            <span class="cmc-icon-circle">G</span>
+                            <span class="cmc-icon-circle">X</span>
+                            <span class="cmc-icon-circle">L</span>
                         </div>
                     </div>
-                    <p class="role">Strategy Planning Team / Senior Manager</p>
+                    <p class="cmc-role">Strategy Planning Team / Senior Manager</p>
                 </div>
             </div>
         </div>
     </div>
 
-
-
-    
+    <div id="digital" class="division-tab-pane">
+        <div class="division-card-container">
+            <div class="cmc-profile-card" style="background-image: url('여기에_사진_주소');">
+                <div class="cmc-info-box">
+                    <div class="cmc-info-top">
+                        <h4 class="cmc-name">Jamie</h4>
+                        <div class="cmc-socials">
+                            <span class="cmc-icon-circle">G</span>
+                            <span class="cmc-icon-circle">X</span>
+                            <span class="cmc-icon-circle">L</span>
+                        </div>
+                    </div>
+                    <p class="cmc-role">Digital Innovation / Product Design Leader</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 
@@ -298,6 +323,20 @@
                     document.body.style.overflow = '';
                 }
             }
+
+        function cmcSwitchTab(evt, tabId) {
+            // 1. 모든 탭 내용 숨기기
+            const panes = document.querySelectorAll('.division-tab-pane');
+            panes.forEach(p => p.classList.remove('active'));
+        
+            // 2. 모든 버튼 비활성화
+            const btns = document.querySelectorAll('.div-tab-btn');
+            btns.forEach(b => b.classList.remove('active'));
+        
+            // 3. 클릭한 탭과 버튼만 활성화
+            document.getElementById(tabId).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }    
     </script>
 </body>
 </html>
