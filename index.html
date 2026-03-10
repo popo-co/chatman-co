@@ -818,7 +818,31 @@
             }
         }
 
-
+        window.addEventListener('DOMContentLoaded', () => {
+            // 1. 주소창에서 # 뒤에 있는 본부 아이디만 가져옴 (예: div-digital)
+            const hash = window.location.hash.replace('#', ''); 
+            
+            if (hash) {
+                // 2. 화면에 있는 모든 본부 탭이랑 버튼을 일단 다 끔 (초기화)
+                document.querySelectorAll('.division-tab-pane').forEach(p => p.classList.remove('active'));
+                document.querySelectorAll('.div-tab-btn').forEach(b => b.classList.remove('active'));
+                
+                // 3. 주소창에 적힌 본부 아이디랑 똑같은 요소 찾기
+                const targetPane = document.getElementById(hash);
+                const targetBtn = document.querySelector(`.div-tab-btn[onclick*="${hash}"]`);
+                
+                // 4. 찾았으면? 묻지도 따지지도 않고 강제로 'active(활성화)' 클래스 먹여서 켜버림!
+                if (targetPane && targetBtn) {
+                    targetPane.classList.add('active');
+                    targetBtn.classList.add('active');
+                    
+                    // 화면 렌더링될 시간 0.1초 준 다음에 해당 위치로 스무스하게 스크롤!
+                    setTimeout(() => {
+                        targetBtn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                }
+            }
+        });
     </script>
 </body>
 </html>
