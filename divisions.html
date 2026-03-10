@@ -217,7 +217,38 @@
         .cmc-role { font-size: 13px; color: #333; font-weight: 400; margin: 0; opacity: 0.9;
         }
  
-
+        /* 🔵 2-Depth: 팀 탭 네비게이션 (알약 모양 버튼 스타일) */
+        .team-tab-nav {
+            display: flex; gap: 10px; padding: 0 20px 25px;
+            overflow-x: auto; scrollbar-width: none;
+        }
+        .team-tab-nav::-webkit-scrollbar { display: none; }
+        
+        .team-tab-btn {
+            padding: 8px 18px; border-radius: 20px;
+            background-color: #f5f5f5; border: 1px solid #eaeaea;
+            font-size: 13px; color: #888; cursor: pointer;
+            transition: all 0.2s ease; white-space: nowrap;
+        }
+        .team-tab-btn:hover { background-color: #eee; }
+        
+        /* 선택된 팀 버튼은 시크한 블랙으로! */
+        .team-tab-btn.active {
+            background-color: #1a1a1a; color: #fff;
+            border-color: #1a1a1a; font-weight: 600;
+        }
+        
+        /* 팀 컨텐츠 전환 애니메이션 */
+        .team-tab-pane { display: none; animation: cmcFadeIn 0.3s ease; }
+        .team-tab-pane.active { display: block; }
+        @keyframes cmcFadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        /* 🚨 1명일 때 꽉 차게 넓어지는 마법 (이거 꼭 있어야 함!) */
+        .cmc-profile-card:only-child {
+            flex: 1 1 auto !important;
+            max-width: 480px !important;
+            width: 100% !important;
+        }
         
     </style>
 </head>
@@ -251,43 +282,48 @@
     
 <section class="cmc-division-section">
     <div class="division-tab-nav">
-        <button class="div-tab-btn active" onclick="cmcSwitchTab(event, 'strategy')">Strategy Planning</button>
-        <button class="div-tab-btn" onclick="cmcSwitchTab(event, 'digital')">Digital Innovation</button>
-        <button class="div-tab-btn" onclick="cmcSwitchTab(event, 'global')">Global Operations</button>
+        <button class="div-tab-btn active" onclick="cmcSwitchDiv(event, 'div-strategy')">Strategy Planning</button>
+        <button class="div-tab-btn" onclick="cmcSwitchDiv(event, 'div-digital')">Digital Innovation</button>
     </div>
 
-    <div id="strategy" class="division-tab-pane active">
-        <div class="division-card-container">
-            <div class="cmc-profile-card" style="background-image: url('여기에_사진_주소');">
-                <div class="cmc-info-box">
-                    <div class="cmc-info-top">
-                        <h4 class="cmc-name">Adrian Vale</h4>
-                        <div class="cmc-socials">
-                            <span class="cmc-icon-circle">G</span>
-                            <span class="cmc-icon-circle">X</span>
-                            <span class="cmc-icon-circle">L</span>
+    <div id="div-strategy" class="division-tab-pane active">
+        
+        <div class="team-tab-nav">
+            <button class="team-tab-btn active" onclick="cmcSwitchTeam(event, 'team-strat-1', 'div-strategy')">Core Strategy Team</button>
+            <button class="team-tab-btn" onclick="cmcSwitchTeam(event, 'team-strat-2', 'div-strategy')">Market Research</button>
+        </div>
+
+        <div id="team-strat-1" class="team-tab-pane active">
+            <div class="division-card-container">
+                <div class="cmc-profile-card" style="background-image: url('Adrian_사진주소');">
+                    <div class="cmc-info-box">
+                        <div class="cmc-info-top">
+                            <h4 class="cmc-name">Adrian Vale</h4>
+                            <div class="cmc-socials">
+                                <span class="cmc-icon-circle">G</span><span class="cmc-icon-circle">X</span><span class="cmc-icon-circle">L</span>
+                            </div>
                         </div>
+                        <p class="cmc-role">Strategy Planning / Senior Manager</p>
                     </div>
-                    <p class="cmc-role">Strategy Planning Team / Senior Manager</p>
                 </div>
             </div>
         </div>
+
+        <div id="team-strat-2" class="team-tab-pane">
+            <div class="division-card-container"><p style="color:#999;">Updating...</p></div>
+        </div>
     </div>
 
-    <div id="digital" class="division-tab-pane">
-        <div class="division-card-container">
-            <div class="cmc-profile-card" style="background-image: url('여기에_사진_주소');">
-                <div class="cmc-info-box">
-                    <div class="cmc-info-top">
-                        <h4 class="cmc-name">Jamie</h4>
-                        <div class="cmc-socials">
-                            <span class="cmc-icon-circle">G</span>
-                            <span class="cmc-icon-circle">X</span>
-                            <span class="cmc-icon-circle">L</span>
-                        </div>
+    <div id="div-digital" class="division-tab-pane">
+        
+        <div class="team-tab-nav">
+            <button class="team-tab-btn active" onclick="cmcSwitchTeam(event, 'team-digi-1', 'div-digital')">Product Design Team</button>
+        </div>
+
+        <div id="team-digi-1" class="team-tab-pane active">
+            <div class="division-card-container">
+                <div class="cmc-profile-card" style="background-image: url('Jamie_사진주소');">
                     </div>
-                    <p class="cmc-role">Digital Innovation / Product Design Leader</p>
-                </div>
             </div>
         </div>
     </div>
@@ -329,19 +365,25 @@
                 }
             }
 
-        function cmcSwitchTab(evt, tabId) {
-            // 1. 모든 탭 내용 숨기기
-            const panes = document.querySelectorAll('.division-tab-pane');
-            panes.forEach(p => p.classList.remove('active'));
-        
-            // 2. 모든 버튼 비활성화
-            const btns = document.querySelectorAll('.div-tab-btn');
-            btns.forEach(b => b.classList.remove('active'));
-        
-            // 3. 클릭한 탭과 버튼만 활성화
-            document.getElementById(tabId).classList.add('active');
+        // 1-Depth: 본부 전환
+        function cmcSwitchDiv(evt, divId) {
+            document.querySelectorAll('.division-tab-pane').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.div-tab-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(divId).classList.add('active');
             evt.currentTarget.classList.add('active');
-        }    
+        }
+        
+        // 2-Depth: 팀 전환 (해당 본부 안에서만 작동하게 제한)
+        function cmcSwitchTeam(evt, teamId, parentDivId) {
+            const parentPane = document.getElementById(parentDivId);
+            
+            parentPane.querySelectorAll('.team-tab-pane').forEach(p => p.classList.remove('active'));
+            parentPane.querySelectorAll('.team-tab-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(teamId).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }   
     </script>
 </body>
 </html>
