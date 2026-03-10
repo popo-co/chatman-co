@@ -367,7 +367,7 @@
                 </div>
             </div>
         
-            <div class="nj-profile-card nj-card" style="background-image: url('https://github.com/user-attachments/assets/01563247-5537-4eba-9e9e-19aa8a85a6fc');" onclick="cmcJumpToTeam('div-marketing', 'team-marketing-2')">
+            <div class="nj-profile-card nj-card" style="background-image: url('...');" onclick="cmcJumpToTeam('div-marketing', 'team-marketing-1', 'Hailey')">
                 <span class="nj-badge">🥳</span>            
                 <div class="nj-info-box">
                     <h4 class="cmc-njname">Hailey</h4>
@@ -1005,8 +1005,8 @@
             }, 150); // 타이밍 살짝 더 여유 있게 0.15초로 잡았습니다.
         });
 
-// 🚨 신규 입사자 카드 클릭 시 -> 해당 본부 & 팀으로 다이렉트 워프하는 함수!
-        function cmcJumpToTeam(divId, teamId) {
+// 🚨 신규 입사자 카드 클릭 시 -> 해당 본부 & 팀으로 다이렉트 워프 + 인물 카드 가로 정중앙 꽂기!
+        function cmcJumpToTeam(divId, teamId, targetName = "") {
             const targetDivPane = document.getElementById(divId);
             const targetDivBtn = document.querySelector(`.div-tab-btn[onclick*="${divId}"]`);
             
@@ -1027,22 +1027,45 @@
                     targetTeamPane.classList.add('active');
                     targetTeamBtn.classList.add('active');
 
-                    // 🌟 [추가된 마법] 하위 '팀 탭'도 정중앙으로 스크롤!
+                    // 팀 탭 메뉴 정중앙 스크롤
                     const teamNavContainer = targetDivPane.querySelector('.team-tab-nav');
                     if(teamNavContainer) {
                         const teamScrollLeftPos = targetTeamBtn.offsetLeft - (teamNavContainer.offsetWidth / 2) + (targetTeamBtn.offsetWidth / 2);
                         teamNavContainer.scrollTo({ left: teamScrollLeftPos, behavior: 'smooth' });
                     }
+
+                    // 🌟 [미친 디테일] targetName(이름)이 입력됐을 경우, 그 사람 카드를 찾아서 정중앙 가로 스크롤!
+                    if (targetName) {
+                        setTimeout(() => { // 탭이 열리고 크기 계산될 시간을 0.05초 줌
+                            const nameTags = targetTeamPane.querySelectorAll('.cmc-name');
+                            let targetCard = null;
+                            
+                            // 이름 텍스트가 일치하는 카드 찾기
+                            nameTags.forEach(tag => {
+                                if (tag.innerText.includes(targetName)) {
+                                    targetCard = tag.closest('.cmc-profile-card');
+                                }
+                            });
+                            
+                            if (targetCard) {
+                                const cardContainer = targetTeamPane.querySelector('.division-card-container');
+                                if (cardContainer) {
+                                    const cardScrollLeftPos = targetCard.offsetLeft - (cardContainer.offsetWidth / 2) + (targetCard.offsetWidth / 2);
+                                    cardContainer.scrollTo({ left: cardScrollLeftPos, behavior: 'smooth' });
+                                }
+                            }
+                        }, 50);
+                    }
                 }
         
-                // [STEP 3] 상위 '본부 탭' 정중앙 정렬 간지
+                // [STEP 3] 상위 '본부 탭' 정중앙 정렬
                 const navContainer = document.querySelector('.division-tab-nav');
                 if(navContainer) {
                     const scrollLeftPos = targetDivBtn.offsetLeft - (navContainer.offsetWidth / 2) + (targetDivBtn.offsetWidth / 2);
                     navContainer.scrollTo({ left: scrollLeftPos, behavior: 'smooth' });
                 }
         
-                // [STEP 4] 화면 세로 스크롤 스무스하게 내리기 (헤더 높이 고려해서 -120px 띄움)
+                // [STEP 4] 화면 세로 스크롤 스무스하게 내리기
                 setTimeout(() => {
                     const yPosition = navContainer.getBoundingClientRect().top + window.pageYOffset - 120;
                     window.scrollTo({ top: yPosition, behavior: 'smooth' });
